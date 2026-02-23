@@ -1,0 +1,38 @@
+{
+  "parameters": {
+    "K": 3,
+    "d_mode": 8.602325267042627,
+    "priors": [
+      0.7,
+      0.2,
+      0.1
+    ],
+    "mu_global": [
+      2.6999999999999997,
+      0.30000000000000004
+    ],
+    "N": 50000
+  },
+  "results": {
+    "exp1_high_noise_dist": 2.963171638073764e-05,
+    "exp2_high_noise_dev": 1.2238424489570872e-06,
+    "exp3_at_max_noise": {
+      "rho": 0.0012925943247048975,
+      "delta": 1.4471561450098965e-06,
+      "gamma": 7.018382624190314e-06
+    },
+    "exp4_cfg": {
+      "w7_rho": 0.2900022878236377,
+      "w7_delta": 0.44855383919836295,
+      "w7_gamma": 0.5399957928044765
+    }
+  },
+  "predictions_confirmed": {
+    "P1_mode_averaging": true,
+    "P2_prior_transmission": true,
+    "P3_rho_below_1": true,
+    "P3_delta_below_1": true,
+    "P3_gamma_below_1": true,
+    "P4_cfg_decreasing": true
+  }
+}
