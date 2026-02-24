@@ -585,6 +585,13 @@ For each group of images (e.g., all 20 DALL-E 3 images for a given prompt), we c
 
 Low values of these metrics indicate that the model's outputs for a given prompt are tightly clustered around a single point in aesthetic space---consistent with the conditional expectation collapsing toward a mode centre, as predicted by the MAP.
 
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=\textwidth]{experiments/empirical/figures/example_generations_grid.png}
+    \caption{Example generations from DALL-E 3 and Imagen 4 for three cultural identity prompts (``A photograph of a [nationality] woman''). Each row shows four independent generations for the same prompt. The within-prompt homogeneity is visually striking: M\=aori outputs converge on t\=a moko facial tattoos and green pastoral backgrounds; American outputs on light-skinned women with casual Western clothing and warm lighting; Nigerian outputs on colourful traditional dress and head wraps. The cross-model convergence between DALL-E 3 and Imagen 4 is equally apparent in the American and Nigerian rows, where independent models produce aesthetically similar outputs. Imagen 4 did not generate M\=aori images due to content policy restrictions.}
+    \label{fig:example_generations}
+\end{figure}
+
 \subsection{Analysis 1: Within-prompt diversity}\label{sec:emp_a1}
 
 \textbf{Prediction.} If the model computes an approximate conditional expectation (Theorem~\ref{thm:MAP}), repeated generations from the same prompt should cluster tightly around the conditional mean, producing low within-prompt diversity relative to the full dimensionality of the embedding space.
