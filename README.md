@@ -1,4 +1,4 @@
-# Statistical Monoculture: How Diffusion Models Flatten Aesthetic Diversity
+# Statistical Monoculture: How Text-to-Image AI Flattens Cultural and Aesthetic Diversity
 
 This repository contains the full source code, experimental suite, and compiled paper for our work on aesthetic homogenisation in diffusion-based generative AI models.
 
@@ -158,7 +158,7 @@ If you use this code or build on this work, please cite:
 
 ```bibtex
 @article{statisticalmonoculture2026,
-  title={Statistical Monoculture: How Diffusion Models Flatten Aesthetic Diversity},
+  title={Statistical Monoculture: How Text-to-Image AI Flattens Cultural and Aesthetic Diversity},
   author={[Authors]},
   year={2026},
   note={Preprint. Code available at https://github.com/timothyjgraham/ai_slop_paper_experiments}

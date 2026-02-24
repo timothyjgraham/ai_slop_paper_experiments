@@ -1,7 +1,7 @@
 {
   "metadata": {
     "description": "Prompt set for empirical validation of the Mode Averaging Principle (MAP/SLOP)",
-    "paper": "Statistical Monoculture: How Diffusion Models Flatten Aesthetic Diversity",
+    "paper": "Statistical Monoculture: How Text-to-Image AI Flattens Cultural and Aesthetic Diversity",
     "version": "1.0",
     "total_prompts": 30,
     "images_per_prompt_per_model": 20,
