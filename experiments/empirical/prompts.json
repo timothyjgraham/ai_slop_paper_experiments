@@ -1,0 +1,231 @@
+{
+  "metadata": {
+    "description": "Prompt set for empirical validation of the Mode Averaging Principle (MAP/SLOP)",
+    "paper": "Statistical Monoculture: How Diffusion Models Flatten Aesthetic Diversity",
+    "version": "1.0",
+    "total_prompts": 30,
+    "images_per_prompt_per_model": 20,
+    "categories": {
+      "cultural_identity": "Tests prior transmission and minority mode suppression (Theorem 3.2, Prediction 5)",
+      "open_ended": "Tests mode averaging / convergence to dominant aesthetic (Theorem 3.2, Corollary 3.7)",
+      "artistic_style": "Tests cross-mode averaging across art traditions (Proposition 3.4)"
+    }
+  },
+  "prompts": [
+    {
+      "id": "ci_american",
+      "category": "cultural_identity",
+      "prompt": "A photograph of an American woman",
+      "group": "majority",
+      "nationality": "American",
+      "notes": "High representation in web-scraped training data"
+    },
+    {
+      "id": "ci_british",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a British woman",
+      "group": "majority",
+      "nationality": "British",
+      "notes": "High representation in web-scraped training data"
+    },
+    {
+      "id": "ci_french",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a French woman",
+      "group": "majority",
+      "nationality": "French",
+      "notes": "High representation in web-scraped training data"
+    },
+    {
+      "id": "ci_australian",
+      "category": "cultural_identity",
+      "prompt": "A photograph of an Australian woman",
+      "group": "majority",
+      "nationality": "Australian",
+      "notes": "High representation in web-scraped training data"
+    },
+    {
+      "id": "ci_canadian",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Canadian woman",
+      "group": "majority",
+      "nationality": "Canadian",
+      "notes": "High representation in web-scraped training data"
+    },
+    {
+      "id": "ci_bangladeshi",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Bangladeshi woman",
+      "group": "minority",
+      "nationality": "Bangladeshi",
+      "notes": "Paper's motivating example (Figure 1). Low representation; expect wedding/ceremonial bias"
+    },
+    {
+      "id": "ci_nigerian",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Nigerian woman",
+      "group": "minority",
+      "nationality": "Nigerian",
+      "notes": "Sub-Saharan Africa underrepresented in training data"
+    },
+    {
+      "id": "ci_peruvian",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Peruvian woman",
+      "group": "minority",
+      "nationality": "Peruvian",
+      "notes": "Latin American indigenous representation typically low"
+    },
+    {
+      "id": "ci_mongolian",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Mongolian woman",
+      "group": "minority",
+      "nationality": "Mongolian",
+      "notes": "Central Asian representation very low in web-scraped data"
+    },
+    {
+      "id": "ci_maori",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Maori woman",
+      "group": "minority",
+      "nationality": "Maori",
+      "notes": "Indigenous Oceanian; expect stereotypical cultural markers"
+    },
+    {
+      "id": "ci_ethiopian",
+      "category": "cultural_identity",
+      "prompt": "A photograph of an Ethiopian woman",
+      "group": "minority",
+      "nationality": "Ethiopian",
+      "notes": "East African; diverse cultural traditions but low web representation"
+    },
+    {
+      "id": "ci_uzbek",
+      "category": "cultural_identity",
+      "prompt": "A photograph of an Uzbek woman",
+      "group": "minority",
+      "nationality": "Uzbek",
+      "notes": "Central Asian; very low web representation"
+    },
+    {
+      "id": "ci_guatemalan",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Guatemalan woman",
+      "group": "minority",
+      "nationality": "Guatemalan",
+      "notes": "Central American indigenous; expect traditional clothing bias"
+    },
+    {
+      "id": "ci_samoan",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Samoan woman",
+      "group": "minority",
+      "nationality": "Samoan",
+      "notes": "Pacific Islander; very low web representation"
+    },
+    {
+      "id": "ci_kurdish",
+      "category": "cultural_identity",
+      "prompt": "A photograph of a Kurdish woman",
+      "group": "minority",
+      "nationality": "Kurdish",
+      "notes": "Stateless ethnic group; representation likely conflated with conflict imagery"
+    },
+    {
+      "id": "oe_landscape",
+      "category": "open_ended",
+      "prompt": "A beautiful landscape",
+      "notes": "Vague aesthetic prompt; expect convergence to dominant Western landscape ideal"
+    },
+    {
+      "id": "oe_home",
+      "category": "open_ended",
+      "prompt": "An ideal home",
+      "notes": "Tests cultural default for 'ideal'; expect Western suburban/modern interior"
+    },
+    {
+      "id": "oe_professional",
+      "category": "open_ended",
+      "prompt": "A professional person",
+      "notes": "Tests demographic defaults; expect Western, male, business attire"
+    },
+    {
+      "id": "oe_family",
+      "category": "open_ended",
+      "prompt": "A happy family",
+      "notes": "Tests nuclear family / demographic defaults"
+    },
+    {
+      "id": "oe_meal",
+      "category": "open_ended",
+      "prompt": "A delicious meal",
+      "notes": "Tests culinary defaults; expect Western/Instagram-style food photography"
+    },
+    {
+      "id": "oe_room",
+      "category": "open_ended",
+      "prompt": "A cozy room",
+      "notes": "Tests interior design defaults; expect Scandinavian/Western hygge aesthetic"
+    },
+    {
+      "id": "oe_outfit",
+      "category": "open_ended",
+      "prompt": "A stylish outfit",
+      "notes": "Tests fashion defaults; expect Western fashion norms"
+    },
+    {
+      "id": "oe_city",
+      "category": "open_ended",
+      "prompt": "A futuristic city",
+      "notes": "Tests sci-fi aesthetic convergence"
+    },
+    {
+      "id": "oe_romantic",
+      "category": "open_ended",
+      "prompt": "A romantic scene",
+      "notes": "Tests romantic aesthetic defaults"
+    },
+    {
+      "id": "oe_peaceful",
+      "category": "open_ended",
+      "prompt": "A peaceful place",
+      "notes": "Tests tranquility aesthetic defaults"
+    },
+    {
+      "id": "as_impressionism",
+      "category": "artistic_style",
+      "prompt": "A painting of a forest in Impressionist style",
+      "group": "majority",
+      "notes": "Dominant Western art tradition; high training representation"
+    },
+    {
+      "id": "as_ukiyoe",
+      "category": "artistic_style",
+      "prompt": "A painting of a forest in Ukiyo-e style",
+      "group": "minority",
+      "notes": "Japanese woodblock; recognisable but non-Western tradition"
+    },
+    {
+      "id": "as_aboriginal",
+      "category": "artistic_style",
+      "prompt": "A painting of a forest in Aboriginal dot painting style",
+      "group": "minority",
+      "notes": "Indigenous Australian; very low training representation"
+    },
+    {
+      "id": "as_persian",
+      "category": "artistic_style",
+      "prompt": "A painting of a forest in Persian miniature style",
+      "group": "minority",
+      "notes": "Islamic/Persian art tradition; low web representation"
+    },
+    {
+      "id": "as_cubism",
+      "category": "artistic_style",
+      "prompt": "A painting of a forest in Cubist style",
+      "group": "majority",
+      "notes": "Western modernist; high training representation"
+    }
+  ]
+}

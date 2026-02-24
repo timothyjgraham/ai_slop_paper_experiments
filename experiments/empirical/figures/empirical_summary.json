@@ -1,0 +1,41 @@
+{
+  "experiment": "Empirical validation of MAP/SLOP on commercial models",
+  "clip_model": "openai/clip-vit-large-patch14",
+  "analyses": {
+    "within_prompt_diversity": {
+      "cultural_identity": {
+        "mean_R_alpha": 0.5676436450170435,
+        "mean_D": 1.5268465318558029,
+        "mean_d_eff": 9.872561610771939,
+        "n_prompts": 15
+      },
+      "artistic_style": {
+        "mean_R_alpha": 0.42145879864692687,
+        "mean_D": 2.3298289975553326,
+        "mean_d_eff": 10.200145013028987,
+        "n_prompts": 5
+      },
+      "open_ended": {
+        "mean_R_alpha": 0.4988508433103561,
+        "mean_D": 1.5570952776092637,
+        "mean_d_eff": 9.494278410943048,
+        "n_prompts": 10
+      }
+    },
+    "cultural_convergence": {
+      "majority_mean_R_alpha": 0.6188907444477081,
+      "minority_mean_R_alpha": 0.5282227993011475,
+      "ratio_minority_to_majority": 0.8534992711395745
+    },
+    "cross_model_agreement": {
+      "mean_cosine_similarity": 0.8087067902088165,
+      "min_cosine_similarity": 0.7285110950469971,
+      "max_cosine_similarity": 0.8476141691207886,
+      "n_prompts": 8
+    }
+  },
+  "predictions": {
+    "minority_less_diverse": true,
+    "cross_model_convergence": true
+  }
+}
