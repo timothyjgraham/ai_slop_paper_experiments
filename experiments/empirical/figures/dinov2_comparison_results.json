@@ -61,8 +61,8 @@
       "prompt_id": "ci_peruvian",
       "group": "minority",
       "n": 6,
-      "R_alpha": 0.2959997057914734,
-      "d_eff": 3.618865966796875
+      "R_alpha": 0.2959999144077301,
+      "d_eff": 3.618866443634033
     },
     {
       "platform": "openai",

@@ -3,35 +3,62 @@
   "clip_model": "openai/clip-vit-large-patch14",
   "analyses": {
     "within_prompt_diversity": {
-      "cultural_identity": {
-        "mean_R_alpha": 0.5676436450170435,
-        "mean_D": 1.5268465318558029,
-        "mean_d_eff": 9.872561610771939,
-        "n_prompts": 15
-      },
       "artistic_style": {
-        "mean_R_alpha": 0.42145879864692687,
-        "mean_D": 2.3298289975553326,
-        "mean_d_eff": 10.200145013028987,
+        "mean_R_alpha": 0.4247539401054382,
+        "mean_D": 1.552514537800392,
+        "mean_d_eff": 9.867723978732627,
         "n_prompts": 5
       },
+      "cultural_identity": {
+        "mean_R_alpha": 0.5484667817751566,
+        "mean_D": 1.561771491757322,
+        "mean_d_eff": 9.915531353557244,
+        "n_prompts": 15
+      },
       "open_ended": {
-        "mean_R_alpha": 0.4988508433103561,
-        "mean_D": 1.5570952776092637,
-        "mean_d_eff": 9.494278410943048,
+        "mean_R_alpha": 0.5224716871976852,
+        "mean_D": 1.7557205653716945,
+        "mean_d_eff": 9.35355640134251,
         "n_prompts": 10
       }
     },
     "cultural_convergence": {
-      "majority_mean_R_alpha": 0.6188907444477081,
-      "minority_mean_R_alpha": 0.5282227993011475,
-      "ratio_minority_to_majority": 0.8534992711395745
+      "majority_mean_R_alpha": 0.618393075466156,
+      "minority_mean_R_alpha": 0.513503634929657,
+      "ratio_minority_to_majority": 0.8303838695841939
+    },
+    "significance_tests": {
+      "majority_R_alpha_bootstrap": {
+        "estimate": 0.618393075466156,
+        "ci_lower": 0.5773221822082997,
+        "ci_upper": 0.6564384411275387,
+        "se": 0.020360741466898348
+      },
+      "minority_R_alpha_bootstrap": {
+        "estimate": 0.513503634929657,
+        "ci_lower": 0.48445965848863126,
+        "ci_upper": 0.5410995776578784,
+        "se": 0.014552896339669058
+      },
+      "difference_bootstrap": {
+        "estimate": 0.10488944053649896,
+        "ci_lower": 0.0543032909929753,
+        "ci_upper": 0.15355420306324957,
+        "se": 0.025187668617197425
+      },
+      "permutation_test": {
+        "observed_diff": 0.10488944053649896,
+        "p_value": 0.00019998000199980003,
+        "n_permutations": 10000,
+        "alternative": "greater"
+      },
+      "cohens_d": 1.6138940025149426
     },
     "cross_model_agreement": {
-      "mean_cosine_similarity": 0.8087067902088165,
+      "mean_cosine_similarity": 0.8588953038056691,
       "min_cosine_similarity": 0.7285110950469971,
-      "max_cosine_similarity": 0.8476141691207886,
-      "n_prompts": 8
+      "max_cosine_similarity": 0.9464092254638672,
+      "n_prompts": 30
     }
   },
   "predictions": {
