@@ -32,7 +32,7 @@
 \maketitle
 
 \begin{abstract}
-Why do AI image generators produce outputs that all look the same? The prevailing explanation blames biased training data, but we show that the problem runs deeper: aesthetic homogenisation is a mathematical consequence of how these models are built. We prove that the mean-squared-error objective used to train diffusion models computes a probability-weighted average over all aesthetic possibilities consistent with a given prompt---a mechanism we call the \textit{Mode Averaging Principle} (MAP). Cultural expressions with low statistical mass are not merely underrepresented; they are \textit{averaged away} by the optimisation itself. MAP combines with two reinforcing forces---classifier-free guidance, which amplifies averaging in pursuit of ``quality,'' and recursive data contamination, whereby each generation's narrowed outputs enter future training sets---to produce what we term the \textit{Statistical Levelling of Originality Principle} (SLOP): the generic, culturally homogeneous quality increasingly characteristic of AI-generated imagery. We validate these predictions through synthetic experiments, empirical analysis of 1{,}177 images from DALL-E 3 and Imagen 4, and an ablation study on open-source models isolating the MSE objective from preference training. Commercial models compress outputs into roughly 10 effective dimensions out of 768, discarding over 98\% of available aesthetic variation; minority cultural representations exhibit 17\% less diversity than majority ones ($p = 0.0002$, Cohen's $d = 1.61$); and independently developed models converge to cosine similarity 0.86 for the same prompts---far beyond what independent generation would produce. The ablation demonstrates that 91\% of this gap is present in a base model with no preference training, establishing the denoising objective---not RLHF---as the primary structural driver. The problem is not only in the data; it is in the calculus.
+Why do AI image generators produce outputs that all look the same? The prevailing explanation blames biased training data, but we show that the problem runs deeper: aesthetic homogenisation is a mathematical consequence of how these models are built. We prove that the mean-squared-error objective used to train diffusion models computes a probability-weighted average over all aesthetic possibilities consistent with a given prompt - a mechanism we call the \textit{Mode Averaging Principle} (MAP). Cultural expressions with low statistical mass are not merely underrepresented; they are \textit{averaged away} by the optimisation itself. MAP combines with two reinforcing forces - classifier-free guidance, which amplifies averaging in pursuit of ``quality,'' and recursive data contamination, whereby each generation's narrowed outputs enter future training sets - to produce what we term the \textit{Statistical Levelling of Originality Principle} (SLOP): the generic, culturally homogeneous quality increasingly characteristic of AI-generated imagery. We validate these predictions through synthetic experiments, empirical analysis of 1{,}177 images from DALL-E 3 and Imagen 4, and an ablation study on open-source models isolating the MSE objective from preference training. Commercial models compress outputs into roughly 10 effective dimensions out of 768, discarding over 98\% of available aesthetic variation; minority cultural representations exhibit 17\% less diversity than majority ones ($p = 0.0002$, Cohen's $d = 1.61$); and independently developed models converge to cosine similarity 0.86 for the same prompts - far beyond what independent generation would produce. The ablation demonstrates that 91\% of this gap is present in a base model with no preference training, establishing the denoising objective - not RLHF - as the primary structural driver. The problem is not only in the data; it is in the calculus.
 \end{abstract}
 
 %% ============================================================
@@ -40,7 +40,7 @@ Why do AI image generators produce outputs that all look the same? The prevailin
 %% ============================================================
 \section{Introduction}
 
-The rapid proliferation of diffusion-based generative models---from DALL-E \citep{Ramesh2021} and Stable Diffusion \citep{Rombach2022} to Midjourney and their successors---has fundamentally transformed the production and consumption of digital visual culture. These systems, built on the foundational work of denoising diffusion probabilistic models \citep{Ho2020, Sohl-Dickstein2015} and score-based generative modelling \citep{Song2019, Song2021}, can produce images of striking technical proficiency from simple text prompts. Yet alongside their rapid adoption, a persistent critique has emerged from scholars working at the intersection of computer science, cultural studies, and the social sciences: these models tend to produce outputs with a characteristic, often generic ``AI aesthetic''---an aesthetic of smoothness, digital perfection, and stylistic blending that feels simultaneously technically proficient and culturally hollow \citep{Lindgren2024, RaleyRhee2023, RobergeCastelle2021, OffertDhaliwal2025}.
+The rapid proliferation of diffusion-based generative models - from DALL-E \citep{Ramesh2021} and Stable Diffusion \citep{Rombach2022} to Midjourney and their successors - has fundamentally transformed the production and consumption of digital visual culture. These systems, built on the foundational work of denoising diffusion probabilistic models \citep{Ho2020, Sohl-Dickstein2015} and score-based generative modelling \citep{Song2019, Song2021}, can produce images of striking technical proficiency from simple text prompts. Yet alongside their rapid adoption, a persistent critique has emerged from scholars working at the intersection of computer science, cultural studies, and the social sciences: these models tend to produce outputs with a characteristic, often generic ``AI aesthetic'' - an aesthetic of smoothness, digital perfection, and stylistic blending that feels simultaneously technically proficient and culturally hollow \citep{Lindgren2024, RaleyRhee2023, RobergeCastelle2021, OffertDhaliwal2025}.
 
 This phenomenon, which Roland Meyer (drawing on Jacob Birken) has termed ``platform realism'' \citep{Meyer2025}, describes a second-order aesthetic of generic images that are statistically optimised to be legible, plausible, and structurally conservative, often reflecting dominant cultural values. Although generative models are frequently billed as producing ``realistic'' imagery, in practice they tend toward outputs that are heavily biased towards Western, male, and middle-class aesthetic preferences \citep{Meyer2025, Bianchi2023, Luccioni2023}. This is attributable not only to the statistical prevalence of such aesthetics in the training data, but also to the filtering processes, RLHF stages, and consumer-oriented design choices embedded in commercial deployment pipelines. Empirical benchmarks such as CultDiff have confirmed that state-of-the-art models frequently fail to generate culturally accurate artefacts for underrepresented regions, pointing to a systematic erasure of non-Western aesthetics \citep{Bayramli2025}.
 
@@ -49,18 +49,18 @@ The critical study of these technologies has developed rapidly under the banner 
 This paper fills that gap. We develop a unified mathematical framework demonstrating that the observed aesthetic homogenisation is driven by three reinforcing convergence forces:
 
 \begin{enumerate}
-    \item \textbf{The denoising objective} (the Mode Averaging Principle, MAP): We prove that the standard mean-squared-error training loss compels the model to learn a conditional expectation operator that, under conditions of high noise, converges to a probability-weighted average of aesthetic modes. Modes with greater statistical mass---corresponding to dominant cultural aesthetics---exert disproportionate gravitational pull on this average.
+ \item \textbf{The denoising objective} (the Mode Averaging Principle, MAP): We prove that the standard mean-squared-error training loss compels the model to learn a conditional expectation operator that, under conditions of high noise, converges to a probability-weighted average of aesthetic modes. Modes with greater statistical mass - corresponding to dominant cultural aesthetics - exert disproportionate gravitational pull on this average.
 
-    \item \textbf{Classifier-free guidance} (CFG): We show that the standard technique used to improve prompt fidelity and perceived ``quality'' \citep{Ho2022} mathematically amplifies the mode-averaging effect, narrowing the output distribution around the dominant conditional mean.
+ \item \textbf{Classifier-free guidance} (CFG): We show that the standard technique used to improve prompt fidelity and perceived ``quality'' \citep{Ho2022} mathematically amplifies the mode-averaging effect, narrowing the output distribution around the dominant conditional mean.
 
-    \item \textbf{Recursive data contamination}: Drawing on recent work on model collapse \citep{Shumailov2024, Alemohammad2023}, we argue that the already-narrowed outputs of current models are entering the training sets of future models, creating a compound variance collapse across generations.
+ \item \textbf{Recursive data contamination}: Drawing on recent work on model collapse \citep{Shumailov2024, Alemohammad2023}, we argue that the already-narrowed outputs of current models are entering the training sets of future models, creating a compound variance collapse across generations.
 \end{enumerate}
 
-The observable consequence of this compound convergence system is what we term the \textit{Statistical Levelling of Originality Principle} (SLOP)---the pervasive generic quality, lack of true distinction, and tendency to dilute unique expressions into a bland statistical average that characterises much AI-generated content. We validate these theoretical predictions in three complementary ways: first, through controlled synthetic experiments on mixture distributions where the ground truth is known; second, through empirical analysis of 1{,}177 images generated by two leading commercial models---OpenAI's DALL-E 3 \citep{Betker2023} and Google's Imagen 4 \citep{GoogleImagen2024}---using CLIP embeddings \citep{Radford2021} to measure diversity in semantic space; and third, through an ablation study on open-source models (SDXL) that isolates the contribution of the MSE objective from preference training. The empirical results confirm all key predictions: within-prompt effective dimension collapses to approximately 10 out of 768 dimensions, minority cultural representations are 17\% less diverse than majority ones ($p = 0.0002$), and different models converge to cosine similarity 0.86 for the same prompts across all 30 test conditions. The ablation demonstrates that 91\% of the majority/minority diversity gap is present in a base model with no preference training, establishing the denoising objective as the primary structural driver. Our research is guided by two core questions:
+The observable consequence of this compound convergence system is what we term the \textit{Statistical Levelling of Originality Principle} (SLOP) - the pervasive generic quality, lack of true distinction, and tendency to dilute unique expressions into a bland statistical average that characterises much AI-generated content. We validate these theoretical predictions in three complementary ways: first, through controlled synthetic experiments on mixture distributions where the ground truth is known; second, through empirical analysis of 1{,}177 images generated by two leading commercial models - OpenAI's DALL-E 3 \citep{Betker2023} and Google's Imagen 4 \citep{GoogleImagen2024} - using CLIP embeddings \citep{Radford2021} to measure diversity in semantic space; and third, through an ablation study on open-source models (SDXL) that isolates the contribution of the MSE objective from preference training. The empirical results confirm all key predictions: within-prompt effective dimension collapses to approximately 10 out of 768 dimensions, minority cultural representations are 17\% less diverse than majority ones ($p = 0.0002$), and different models converge to cosine similarity 0.86 for the same prompts across all 30 test conditions. The ablation demonstrates that 91\% of the majority/minority diversity gap is present in a base model with no preference training, establishing the denoising objective as the primary structural driver. Our research is guided by two core questions:
 
 \begin{enumerate}
-    \item Why do diffusion models inherently produce a specific, ``averaged'' aesthetic, and what are the precise mathematical mechanisms underlying this homogenisation?
-    \item How might cultural critiques of AI-generated art proceed from, and be strengthened by, a rigorous technical and mathematical framework?
+ \item Why do diffusion models inherently produce a specific, ``averaged'' aesthetic, and what are the precise mathematical mechanisms underlying this homogenisation?
+ \item How might cultural critiques of AI-generated art proceed from, and be strengthened by, a rigorous technical and mathematical framework?
 \end{enumerate}
 
 We proceed as follows. Section~\ref{sec:framework} establishes the mathematical language for analysing aesthetic distributions. Section~\ref{sec:map} contains our central mathematical results, proving the Mode Averaging Principle and extending it to classifier-free guidance and trajectory dynamics. Section~\ref{sec:compound} develops the compound convergence system that links intra-generation averaging to inter-generation collapse. Section~\ref{sec:culture} connects our mathematical framework to existing cultural critiques, developing the SLOP concept and its implications. Section~\ref{sec:experiments} presents synthetic experimental validation. Section~\ref{sec:empirical} reports empirical validation on commercial text-to-image models. Section~\ref{sec:ablation} presents an ablation study disentangling the MSE objective from preference training. Section~\ref{sec:discussion} discusses implications, limitations, and future directions.
@@ -70,7 +70,9 @@ We proceed as follows. Section~\ref{sec:framework} establishes the mathematical 
 %% ============================================================
 \section{A mathematical framework for aesthetic diversity}\label{sec:framework}
 
-To move from qualitative observation to formal analysis, we require a precise mathematical language for describing how generative models shape aesthetic diversity. This section establishes that language, defining distributions over an abstract aesthetic space and introducing measures of their concentration, diversity, and complexity. These measures draw on information theory and statistical mechanics, and will be applied directly to the diffusion process in subsequent sections.
+Before proceeding to the formal definitions, we offer an informal overview of the mathematical strategy for readers whose primary training lies outside mathematics. The central idea can be stated in plain language. Imagine all possible images as points in a vast space. The training data is not spread evenly across this space: some regions (Western stock photography, conventional portraiture) are densely populated, while others (Mongolian textile patterns, Peruvian folk art) are sparsely populated. When a diffusion model generates an image, it starts from pure noise and progressively refines. At each step, it effectively asks: \textit{given what I see so far, what is the average of all the original images that could have produced this?} The mathematical answer is a weighted average, where each image's influence is proportional to how common images like it are in the training data. For a prompt like ``a photograph of a Bangladeshi woman,'' this average sits closer to the most common depictions (ceremonial dress, market settings) than to rarer ones (everyday clothing, professional settings) - not because the model has learned a stereotype, but because the average is mathematically pulled toward whatever is most statistically abundant. The formal apparatus below makes this precise: this section defines measures of how spread out or compressed a collection of images is in representational space, while Section~\ref{sec:map} proves that the standard training objective necessarily computes these weighted averages, with the cultural consequences following directly from the mathematics.
+
+To move from this intuition to formal analysis, we require a precise mathematical language for describing how generative models shape aesthetic diversity. The remainder of this section establishes that language, defining distributions over an abstract aesthetic space and introducing measures of their concentration, diversity, and complexity. These measures draw on information theory and statistical mechanics, and will be applied directly to the diffusion process in subsequent sections.
 
 \subsection{Aesthetic space and distributions}
 
@@ -95,7 +97,7 @@ This is the \emph{perplexity} of the distribution, representing the effective vo
 
 \textbf{Effective Dimension}: A measure of distributional complexity:
 $$d_{\mathrm{eff}}(P) = \frac{1}{\int_{\mathcal{X}} p(x)^2\, dx}$$
-This is equivalent to $\exp(H_2(P))$ where $H_2$ is the R\'{e}nyi entropy of order 2, and is known in statistical physics as the \emph{participation ratio}---the effective number of states contributing to the distribution.
+This is equivalent to $\exp(H_2(P))$ where $H_2$ is the R\'{e}nyi entropy of order 2, and is known in statistical physics as the \emph{participation ratio} - the effective number of states contributing to the distribution.
 \end{definition}
 
 These definitions use quantiles and information-theoretic measures that are well-defined for general continuous distributions, ensuring our framework handles the high-dimensional aesthetic spaces in which generative models operate.
@@ -130,9 +132,9 @@ where $\bar{\alpha}_t = \prod_{s=1}^t \alpha_s$ is the cumulative noise schedule
 In the \textit{reverse process}, a neural network $\epsilon_\theta(x_t, t)$ is trained to predict the added noise. The standard training objective is the mean squared error loss:
 $$\mathcal{L}(\theta) = \mathbb{E}_{x_0 \sim p_{\mathrm{data}},\, \epsilon \sim \mathcal{N}(0,I),\, t}\left[\|\epsilon - \epsilon_\theta(x_t, t)\|^2\right]$$
 
-The optimal predictor minimising this loss is the conditional expectation $\epsilon_\theta^*(x_t, t) = \mathbb{E}[\epsilon \mid x_t]$. By the reparameterisation identity, this is equivalent to the model learning to predict $\mathbb{E}[x_0 \mid x_t]$---the \textit{statistical average} of all original data points that could have produced the observed noisy input $x_t$.
+The optimal predictor minimising this loss is the conditional expectation $\epsilon_\theta^*(x_t, t) = \mathbb{E}[\epsilon \mid x_t]$. By the reparameterisation identity, this is equivalent to the model learning to predict $\mathbb{E}[x_0 \mid x_t]$ - the \textit{statistical average} of all original data points that could have produced the observed noisy input $x_t$.
 
-This fact---that the optimal denoiser computes a conditional expectation---is well known in the machine learning literature. What has not been formalised is its cultural consequence: conditional expectation is, by mathematical construction, an \textit{averaging operator}. It does not select the most likely mode, preserve rare modes, or maintain distributional diversity. It computes a weighted mean. The remainder of this section makes this consequence precise.
+This fact - that the optimal denoiser computes a conditional expectation - is well known in the machine learning literature. What has not been formalised is its cultural consequence: conditional expectation is, by mathematical construction, an \textit{averaging operator}. It does not select the most likely mode, preserve rare modes, or maintain distributional diversity. It computes a weighted mean. The remainder of this section makes this consequence precise.
 
 \subsection{Formalising the training data landscape}
 
@@ -141,13 +143,13 @@ The training distribution $P_{\mathrm{data}}$ can be approximated as a mixture o
 $$P_{\mathrm{data}}(x) = \sum_{i=1}^k \pi_i \, \phi_i(x)$$
 where:
 \begin{itemize}
-    \item $\pi_i > 0$ are mixing weights with $\sum_{i=1}^k \pi_i = 1$, representing the \emph{statistical mass} of each mode in the training data;
-    \item $\phi_i(x) = \mathcal{N}(x;\, \mu_i,\, \Sigma_i)$ are Gaussian component densities with means $\mu_i$ (the aesthetic centre of each mode) and covariances $\Sigma_i$ (the internal diversity within each mode);
-    \item the components are well-separated: $\|\mu_i - \mu_j\| \geq \delta > 0$ for $i \neq j$.
+ \item $\pi_i > 0$ are mixing weights with $\sum_{i=1}^k \pi_i = 1$, representing the \emph{statistical mass} of each mode in the training data;
+ \item $\phi_i(x) = \mathcal{N}(x;\, \mu_i,\, \Sigma_i)$ are Gaussian component densities with means $\mu_i$ (the aesthetic centre of each mode) and covariances $\Sigma_i$ (the internal diversity within each mode);
+ \item the components are well-separated: $\|\mu_i - \mu_j\| \geq \delta > 0$ for $i \neq j$.
 \end{itemize}
 \end{assumption}
 
-This assumption captures the structure of real aesthetic data, which clusters into identifiable styles---``contemporary Western portraiture'', ``East Asian ink wash painting'', ``West African textile patterns''---with vastly different prevalences in web-scraped training corpora. The weights $\pi_i$ encode the power asymmetry: dominant modes (e.g., Western stock photography) have large $\pi_i$, while minority modes (e.g., authentic Bangladeshi cultural representation) have small $\pi_i$.
+This assumption captures the structure of real aesthetic data, which clusters into identifiable styles - ``contemporary Western portraiture'', ``East Asian ink wash painting'', ``West African textile patterns'' - with vastly different prevalences in web-scraped training corpora. The weights $\pi_i$ encode the power asymmetry: dominant modes (e.g., Western stock photography) have large $\pi_i$, while minority modes (e.g., authentic Bangladeshi cultural representation) have small $\pi_i$.
 
 \subsection{The central theorem: mode averaging under high noise}
 
@@ -176,19 +178,19 @@ We have $\mathrm{Cov}(x_0, x_t) = \sqrt{\bar{\alpha}_t}\, \Sigma_i$, $\mathrm{Va
 As $\sigma_t^2 \to \infty$, the matrix $\bar{\alpha}_t \Sigma_i (\bar{\alpha}_t \Sigma_i + \sigma_t^2 I)^{-1} \to 0$ in operator norm, giving $\mathbb{E}[x_0 \mid x_t, C_i] \to \mu_i$.
 \end{proof}
 
-\begin{theorem}[Mode Averaging Under High Noise---The Mode Averaging Principle]\label{thm:MAP}
+\begin{theorem}[Mode Averaging Under High Noise - The Mode Averaging Principle]\label{thm:MAP}
 Consider the mixture model from Assumption~\ref{assum:mixture} under the diffusion process. Let $d_{\mathrm{mode}} = \min_{i \neq j} \|\mu_i - \mu_j\|$ be the minimum inter-mode separation.
 
 If the noise level satisfies $\sigma_t \geq C \cdot \max_{i,j} \|\mu_i - \mu_j\|$ for some constant $C > 1$, then the optimal denoiser exhibits:
 
 \begin{enumerate}
-    \item \textbf{Mode Averaging (Statistical Concentration):} The conditional expectation converges to a probability-weighted average of the mode centres:
-    $$\mathbb{E}[x_0 \mid x_t] = \sum_{i=1}^k P(C_i \mid x_t)\, \mathbb{E}[x_0 \mid x_t, C_i] \;\longrightarrow\; \sum_{i=1}^k \pi_i\, \mu_i = \mu_{\mathrm{global}}$$
-    as $\sigma_t \to \infty$.
+ \item \textbf{Mode Averaging (Statistical Concentration):} The conditional expectation converges to a probability-weighted average of the mode centres:
+ $$\mathbb{E}[x_0 \mid x_t] = \sum_{i=1}^k P(C_i \mid x_t)\, \mathbb{E}[x_0 \mid x_t, C_i] \;\longrightarrow\; \sum_{i=1}^k \pi_i\, \mu_i = \mu_{\mathrm{global}}$$
+ as $\sigma_t \to \infty$.
 
-    \item \textbf{Prior Transmission (The Dominance Effect):} In the high-noise limit, the posterior probability of each mode converges to its prior weight:
-    $$P(C_i \mid x_t) \to \pi_i$$
-    The model's prediction thus defaults to the prior imbalance in the training data: any pre-existing demographic or cultural skew is faithfully transmitted to the output, with the dominant mode exerting gravitational pull proportional to its statistical mass.
+ \item \textbf{Prior Transmission (The Dominance Effect):} In the high-noise limit, the posterior probability of each mode converges to its prior weight:
+ $$P(C_i \mid x_t) \to \pi_i$$
+ The model's prediction thus defaults to the prior imbalance in the training data: any pre-existing demographic or cultural skew is faithfully transmitted to the output, with the dominant mode exerting gravitational pull proportional to its statistical mass.
 \end{enumerate}
 \end{theorem}
 
@@ -222,23 +224,23 @@ If a neural network $f_\theta(x_t, t)$ is trained to minimise the diffusion loss
 \subsection{An illustrative example: the ``Bangladeshi woman'' problem}
 
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{ChatGPT_5_Bangladeshi_woman_denoising_step_and_final_image.png}
-    \caption{DALL-E 3 (via the ChatGPT interface) prompted to generate an image of a ``Bangladeshi woman.'' Left: the denoising stage; right: the final generated image. The output gravitates toward wedding/ceremonial attire rather than everyday representation, consistent with the Mode Averaging Principle's prediction that the model defaults to the highest-density region of its conditional distribution.}
-    \label{fig:bangladeshi}
+ \centering
+ \includegraphics[width=0.8\textwidth]{ChatGPT_5_Bangladeshi_woman_denoising_step_and_final_image.png}
+ \caption{DALL-E 3 (via the ChatGPT interface) prompted to generate an image of a ``Bangladeshi woman.'' Left: the denoising stage; right: the final generated image. The output gravitates toward wedding/ceremonial attire rather than everyday representation, consistent with the Mode Averaging Principle's prediction that the model defaults to the highest-density region of its conditional distribution.}
+ \label{fig:bangladeshi}
 \end{figure}
 
 To build intuition for the theorem's cultural implications, consider what happens when a user prompts a model with ``Generate a photo of a Bangladeshi woman'' (Figure~\ref{fig:bangladeshi}). The generation process begins with pure noise $x_T$ and iteratively denoises. At the earliest steps, where noise is highest and the input is maximally ambiguous, Theorem~\ref{thm:MAP} applies directly: the model's prediction $\mathbb{E}[x_0 \mid x_t, \text{``Bangladeshi woman''}]$ is a prior-weighted average over all training images matching this description.
 
-Because web-scraped training corpora contain disproportionately many images of South Asian women in wedding or ceremonial contexts---reflecting the curation biases of platforms like Pinterest and stock photography sites---the conditional distribution for this prompt has overwhelming statistical mass on ceremonial imagery. The model does not treat ``woman in everyday clothing'' and ``woman in bridal attire'' as equally valid interpretations; it follows the gradient of highest probability density. The result is a generated image that perpetuates orientalist stereotypes, reducing complex cultural identity to a homogenised Western colonial fantasy of the ``exotic other.''
+Because web-scraped training corpora contain disproportionately many images of South Asian women in wedding or ceremonial contexts - reflecting the curation biases of platforms like Pinterest and stock photography sites - the conditional distribution for this prompt has overwhelming statistical mass on ceremonial imagery. The model does not treat ``woman in everyday clothing'' and ``woman in bridal attire'' as equally valid interpretations; it follows the gradient of highest probability density. The result is a generated image that perpetuates orientalist stereotypes, reducing complex cultural identity to a homogenised Western colonial fantasy of the ``exotic other.''
 
 Critically, this is not a failure of the particular model's training data alone, though data bias is certainly a contributing factor. It is a structural consequence of the denoising objective: the conditional expectation \textit{must} weight representations by their statistical mass, and any prompt whose authentic representations exist in a low-density region of the training distribution will be systematically pulled toward the dominant mode.
 
 \begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{ChatGPT_ideal_images.png}
-    \caption{Images of ``photo realistic'' and ``ideal'' people and social roles, generated by DALL-E 3 via the ChatGPT 4o interface using simple prompts. The outputs exhibit the characteristic smoothness, idealisation, and demographic skew predicted by the Mode Averaging Principle.}
-    \label{fig:chatgpt_images}
+ \centering
+ \includegraphics[width=0.8\textwidth]{ChatGPT_ideal_images.png}
+ \caption{Images of ``photo realistic'' and ``ideal'' people and social roles, generated by DALL-E 3 via the ChatGPT 4o interface using simple prompts. The outputs exhibit the characteristic smoothness, idealisation, and demographic skew predicted by the Mode Averaging Principle.}
+ \label{fig:chatgpt_images}
 \end{figure}
 
 Figure~\ref{fig:chatgpt_images} shows further examples where the model has been tasked with interpreting vague and subjective concepts of identity, such as the ``ideal citizen'' or a ``real national.'' The outputs align closely with Meyer's characterisation of the AI aesthetic as a logic that enforces a second-order aesthetic convergence \citep{Meyer2025}. Some critics have argued that these models embody an aesthetic of idealised ethnic uniformity \citep{Broussard2023}, an observation that finds support in benchmarks demonstrating significant cultural and demographic biases in model outputs \citep{Bayramli2025, Luccioni2023}.
@@ -276,7 +278,7 @@ The CFG score modification can be rewritten as:
 This is the score of the distribution $\tilde{p}(x_t \mid c) \propto p(x_t \mid c)^{1+w} / p(x_t)^w$. Raising $p(x_t \mid c)$ to the power $1+w$ sharpens its peaks while attenuating its tails, reducing the variance of the effective sampling distribution. For the Gaussian mixture case, this corresponds to reducing the effective covariance of each component while increasing the relative weight of the dominant conditional mode. Hence the output distribution under CFG is more concentrated than under standard conditional generation.
 \end{proof}
 
-This result reveals a fundamental tension in current generative AI design: the very mechanism used to enhance ``quality'' and prompt fidelity has the direct mathematical side-effect of intensifying aesthetic homogenisation. Higher guidance scales produce ``better-looking'' images precisely \textit{because} they are more statistically concentrated---closer to the mean of the dominant aesthetic mode---which is simultaneously what makes them more culturally generic.
+This result reveals a fundamental tension in current generative AI design: the very mechanism used to enhance ``quality'' and prompt fidelity has the direct mathematical side-effect of intensifying aesthetic homogenisation. Higher guidance scales produce ``better-looking'' images precisely \textit{because} they are more statistically concentrated - closer to the mean of the dominant aesthetic mode - which is simultaneously what makes them more culturally generic.
 
 \subsection{Trajectory lock-in: from per-step averaging to output homogenisation}\label{sec:trajectory}
 
@@ -287,7 +289,7 @@ includes a stochastic noise term $\sigma_t z$ at each step, which could in princ
 \begin{proposition}[Trajectory Lock-In]\label{prop:lockin}
 Consider the reverse diffusion process starting from $x_T \sim \mathcal{N}(0, I)$. In the high-noise regime ($t$ close to $T$), the denoiser prediction lies near $\mu_{\mathrm{global}}$ by Theorem~\ref{thm:MAP}. The trajectory $x_T \to x_{T-1} \to \cdots \to x_0$ thus begins in the vicinity of the global mean.
 
-As denoising proceeds and the noise level decreases, the posterior $P(C_i \mid x_t)$ sharpens and eventually concentrates on a single mode. However, which mode the trajectory converges to is largely determined by the early-step dynamics: the trajectory enters the basin of attraction of whichever mode is closest to its initial position near $\mu_{\mathrm{global}}$, which---by construction---lies nearest to the dominant mode $C_j$ with the largest prior weight $\pi_j$.
+As denoising proceeds and the noise level decreases, the posterior $P(C_i \mid x_t)$ sharpens and eventually concentrates on a single mode. However, which mode the trajectory converges to is largely determined by the early-step dynamics: the trajectory enters the basin of attraction of whichever mode is closest to its initial position near $\mu_{\mathrm{global}}$, which - by construction - lies nearest to the dominant mode $C_j$ with the largest prior weight $\pi_j$.
 
 Formally, for a two-component mixture with $\pi_1 > \pi_2$, the probability that the trajectory ultimately converges to mode $C_1$ satisfies:
 $$P(\text{output} \in C_1) \geq \pi_1$$
@@ -311,9 +313,9 @@ We can now state the homogenisation result with proper support from the precedin
 \begin{corollary}[Aesthetic Homogenisation]\label{cor:homogen}
 Under the conditions of Theorem~\ref{thm:MAP}, let $Q$ be the distribution of model outputs (generated by the reverse diffusion process) and $P = P_{\mathrm{data}}$ be the original training distribution. Then:
 \begin{enumerate}
-    \item $\rho_\alpha(Q,P) < 1$ \quad (support concentration)
-    \item $\delta(Q,P) < 1$ \quad (diversity loss)
-    \item $\gamma(Q,P) < 1$ \quad (dimensional collapse)
+ \item $\rho_\alpha(Q,P) < 1$ \quad (support concentration)
+ \item $\delta(Q,P) < 1$ \quad (diversity loss)
+ \item $\gamma(Q,P) < 1$ \quad (dimensional collapse)
 \end{enumerate}
 \end{corollary}
 
@@ -338,9 +340,9 @@ The Mode Averaging Principle, established in the previous section, describes an 
 
 \textbf{Force 1: The denoising objective (MAP).} As proven in Theorem~\ref{thm:MAP}, the MSE training loss compels the model to learn a conditional expectation operator that averages across aesthetic modes, with weighting proportional to each mode's statistical mass. This is the primary, mathematically provable mechanism.
 
-\textbf{Force 2: Classifier-free guidance (CFG).} As shown in Proposition~\ref{prop:cfg}, CFG sharpens the conditional distribution around the mode centre, amplifying the averaging effect. In practice, higher CFG values are associated with outputs perceived as ``higher quality''---precisely because they are more statistically concentrated and therefore more legible and familiar. This creates a perverse incentive: the tool for improving quality is simultaneously the tool for destroying diversity.
+\textbf{Force 2: Classifier-free guidance (CFG).} As shown in Proposition~\ref{prop:cfg}, CFG sharpens the conditional distribution around the mode centre, amplifying the averaging effect. In practice, higher CFG values are associated with outputs perceived as ``higher quality'' - precisely because they are more statistically concentrated and therefore more legible and familiar. This creates a perverse incentive: the tool for improving quality is simultaneously the tool for destroying diversity.
 
-\textbf{Force 3: Recursive data contamination.} As AI-generated content proliferates across the internet, it inevitably enters the training sets of future models. Recent work has demonstrated that this recursive training on generated data causes progressive variance collapse---termed ``model collapse'' \citep{Shumailov2024} or ``Model Autophagy Disorder'' (MAD) \citep{Alemohammad2023}. Shumailov et al.\ showed that models trained on recursively generated data progressively lose information about the tails of the original distribution, with minority modes being the first to disappear \citep{Shumailov2024}. Mart\'{i}nez et al.\ \citep{Schaeffer2025} have provided a nuanced account of the conditions under which collapse occurs, while the broader cultural implications have been explored under the evocative label ``Habsburg AI'' \citep{Sadowski2023}.
+\textbf{Force 3: Recursive data contamination.} As AI-generated content proliferates across the internet, it inevitably enters the training sets of future models. Recent work has demonstrated that this recursive training on generated data causes progressive variance collapse - termed ``model collapse'' \citep{Shumailov2024} or ``Model Autophagy Disorder'' (MAD) \citep{Alemohammad2023}. Shumailov et al.\ showed that models trained on recursively generated data progressively lose information about the tails of the original distribution, with minority modes being the first to disappear \citep{Shumailov2024}. Mart\'{i}nez et al.\ \citep{Schaeffer2025} have provided a nuanced account of the conditions under which collapse occurs, while the broader cultural implications have been explored under the evocative label ``Habsburg AI'' \citep{Sadowski2023}.
 
 \subsection{The feedback loop}
 
@@ -352,7 +354,7 @@ $$Q^{(n+1)} = \mathrm{MAP}_w(P^{(n+1)})$$
 
 where $\lambda \in [0, 1]$ represents the fraction of synthetic data in the training set and $\mathrm{MAP}_w$ denotes the compound effect of mode averaging and CFG at guidance scale $w$. Each application of $\mathrm{MAP}_w$ reduces variance (by Corollary~\ref{cor:homogen}), and each mixing step with synthetic data shifts the training distribution toward the already-narrowed output.
 
-This compound system predicts a progressive convergence toward a fixed point: a distribution concentrated entirely on the global mean of the dominant aesthetic mode. This is precisely the ``dead internet'' scenario described by cultural critics \citep{Tiffany2021}---a digital ecosystem saturated with statistically optimal but culturally vacuous content.
+This compound system predicts a progressive convergence toward a fixed point: a distribution concentrated entirely on the global mean of the dominant aesthetic mode. This is precisely the ``dead internet'' scenario described by cultural critics \citep{Tiffany2021} - a digital ecosystem saturated with statistically optimal but culturally vacuous content.
 
 \subsection{Connecting MAP and model collapse}
 
@@ -373,21 +375,21 @@ The mathematical framework established in the preceding sections was developed i
 
 Meyer's concept of ``platform realism'' \citep{Meyer2025} identifies three properties of the AI aesthetic: legibility, plausibility, and structural conservatism. Our framework reveals that these are not independent observations but mathematical consequences of the Mode Averaging Principle:
 
-\textit{Legibility} follows from concentration near the mode centre. High-density regions of the training distribution correspond to the most common, widely recognised visual patterns---faces rendered in familiar proportions, lighting that follows photographic conventions, compositions that match stock photography norms. The denoiser's convergence toward these regions produces outputs that are immediately ``readable.''
+\textit{Legibility} follows from concentration near the mode centre. High-density regions of the training distribution correspond to the most common, widely recognised visual patterns - faces rendered in familiar proportions, lighting that follows photographic conventions, compositions that match stock photography norms. The denoiser's convergence toward these regions produces outputs that are immediately ``readable.''
 
 \textit{Plausibility} follows from lying within the convex hull of training modes. Because the conditional expectation computes a weighted average of real data, outputs are interpolations of genuine aesthetic artefacts. They look ``real'' because they are statistical composites of real images, even though they belong to no authentic tradition.
 
-\textit{Structural conservatism} follows from prior-weighted dominance. When uncertain (high noise, ambiguous prompt), the model defaults to the highest-mass mode, reproducing the majority aesthetic. Deviations from this majority---whether in cultural representation, artistic style, or compositional choice---are treated as statistical improbabilities to be corrected through averaging.
+\textit{Structural conservatism} follows from prior-weighted dominance. When uncertain (high noise, ambiguous prompt), the model defaults to the highest-mass mode, reproducing the majority aesthetic. Deviations from this majority - whether in cultural representation, artistic style, or compositional choice - are treated as statistical improbabilities to be corrected through averaging.
 
 Platform realism is thus not merely a descriptive label but a \textit{predictable mathematical outcome} of diffusion model architecture.
 
 \subsection{Mimicry and the convex hull}
 
-The relationship between AI-generated content and authentic cultural expression finds a striking parallel in Homi Bhabha's theory of colonial mimicry \citep{Bhabha1984, Bhabha1994}. Bhabha describes mimicry as a process in which the colonised subject imitates the coloniser's culture, producing representations that are ``almost the same, but not quite''---close enough to be recognisable, but marked by an irreducible difference that signals inauthenticity.
+The relationship between AI-generated content and authentic cultural expression finds a striking parallel in Homi Bhabha's theory of colonial mimicry \citep{Bhabha1984, Bhabha1994}. Bhabha describes mimicry as a process in which the colonised subject imitates the coloniser's culture, producing representations that are ``almost the same, but not quite'' - close enough to be recognisable, but marked by an irreducible difference that signals inauthenticity.
 
-Our mathematical framework gives this formulation precise content. Model outputs lie in the \textit{convex hull} of training modes---they are weighted averages of genuine cultural expressions, so they are ``almost the same'' as authentic representations. But they converge to a statistical centre of mass that belongs to no single, genuine cultural tradition, so they are ``not quite.'' The degree to which a representation is ``not quite'' authentic is quantifiable: it is the distance between the conditional expectation $\mathbb{E}[x_0 \mid x_t, c]$ and the mode centre $\mu_i$ of the target culture. For minority cultures with small $\pi_i$, this distance is larger because the conditional expectation is pulled further toward the global mean by the dominant modes. The ``mimicry gap'' is thus mathematically proportional to the statistical marginalisation of the culture in the training data.
+Our mathematical framework gives this formulation precise content. Model outputs lie in the \textit{convex hull} of training modes - they are weighted averages of genuine cultural expressions, so they are ``almost the same'' as authentic representations. But they converge to a statistical centre of mass that belongs to no single, genuine cultural tradition, so they are ``not quite.'' The degree to which a representation is ``not quite'' authentic is quantifiable: it is the distance between the conditional expectation $\mathbb{E}[x_0 \mid x_t, c]$ and the mode centre $\mu_i$ of the target culture. For minority cultures with small $\pi_i$, this distance is larger because the conditional expectation is pulled further toward the global mean by the dominant modes. The ``mimicry gap'' is thus mathematically proportional to the statistical marginalisation of the culture in the training data.
 
-This connection extends further. Bhabha argues that mimicry produces a ``blurred copy'' that creates discomfort through its uncanny resemblance to, yet difference from, the original. AI-generated content produces exactly this effect: images of human faces that are ``almost the same'' as real photographs but marked by an irreducible uncanniness---what we might term the \textit{statistical uncanny valley}. The same principle operates when large language models are deployed as mental health support tools: their outputs mimic therapeutic language closely enough to be recognisable but lack the relational and contextual depth of genuine human empathy, producing responses that are ``almost the same, but not quite'' \citep{Bhabha1984}.
+This connection extends further. Bhabha argues that mimicry produces a ``blurred copy'' that creates discomfort through its uncanny resemblance to, yet difference from, the original. AI-generated content produces exactly this effect: images of human faces that are ``almost the same'' as real photographs but marked by an irreducible uncanniness - what we might term the \textit{statistical uncanny valley}. The same principle operates when large language models are deployed as mental health support tools: their outputs mimic therapeutic language closely enough to be recognisable but lack the relational and contextual depth of genuine human empathy, producing responses that are ``almost the same, but not quite'' \citep{Bhabha1984}.
 
 \subsection{Statistical monoculture and the politics of the mean}
 
@@ -395,19 +397,19 @@ The mathematical mechanism of mode averaging has political implications that ext
 
 We can identify three structural features of this mathematical regime that have clear political resonance:
 
-\textit{Idealised uniformity.} The model generates outputs near the statistical centre of mass, but this centre is defined by the dominant group's aesthetic. The ``ideal'' face, body, or scene is the one with the highest statistical mass---typically Western, white, and conventionally attractive.
+\textit{Idealised uniformity.} The model generates outputs near the statistical centre of mass, but this centre is defined by the dominant group's aesthetic. The ``ideal'' face, body, or scene is the one with the highest statistical mass - typically Western, white, and conventionally attractive.
 
 \textit{Systematic assimilation.} Difference is treated as deviation from the centre of mass. The denoising process is an act of statistical correction, pulling outlying representations back toward the dominant distribution. Authentic minority representations exist in the low-density tails that the model's averaging operation systematically erodes.
 
-\textit{Suppression through optimisation.} The model's objective is to minimise error from a mean that encodes the aesthetic majority. This mathematically formalises the enforcement of a single normative standard---not through deliberate design, but through the logic of statistical learning itself \citep{Broussard2023}.
+\textit{Suppression through optimisation.} The model's objective is to minimise error from a mean that encodes the aesthetic majority. This mathematically formalises the enforcement of a single normative standard - not through deliberate design, but through the logic of statistical learning itself \citep{Broussard2023}.
 
 We use the term \textit{statistical monoculture} to describe this regime: a system in which a single aesthetic centre of mass exerts dominance over all representations through the mathematical mechanics of conditional expectation. The resonance with critiques of cultural homogenisation under centralised power is not coincidental; both phenomena emerge from systems that equate statistical dominance with normative desirability.
 
 \subsection{SLOP: the statistical levelling of originality principle}
 
-The observable consequence of the compound convergence system---the generic, bland, culturally vacuous quality of typical AI-generated content---is what we term the \textit{Statistical Levelling of Originality Principle} (SLOP). SLOP is the cultural surface of MAP: it manifests as the pervasive ``slop'' that saturates AI-generated imagery, text, and media---content that is superficially plausible but devoid of authentic particularity.
+The observable consequence of the compound convergence system - the generic, bland, culturally vacuous quality of typical AI-generated content - is what we term the \textit{Statistical Levelling of Originality Principle} (SLOP). SLOP is the cultural surface of MAP: it manifests as the pervasive ``slop'' that saturates AI-generated imagery, text, and media - content that is superficially plausible but devoid of authentic particularity.
 
-SLOP provides a technical explanation for the ``cultural uncanny valley'' frequently observed in AI-generated content. Such content appears familiar precisely because it is a statistical average of elements extensively witnessed by the algorithm. Yet it simultaneously evokes inauthenticity because it belongs to no single, original cultural or artistic tradition. It is an artefact of the statistical mean---an entire generative culture of artefacts, each lacking the distinctive provenance of human-made art.
+SLOP provides a technical explanation for the ``cultural uncanny valley'' frequently observed in AI-generated content. Such content appears familiar precisely because it is a statistical average of elements extensively witnessed by the algorithm. Yet it simultaneously evokes inauthenticity because it belongs to no single, original cultural or artistic tradition. It is an artefact of the statistical mean - an entire generative culture of artefacts, each lacking the distinctive provenance of human-made art.
 
 The implications of SLOP for cultural evolution are profound. Human creativity has historically been characterised by divergence, unexpected mutation, and the exploration of novel niches. The compound convergence system of MAP, CFG, and recursive contamination is its mathematical antithesis: a force of statistical convergence, aesthetic consolidation, and the systematic marginalisation of any expression that lacks sufficient statistical mass. The ``dead internet'' hypothesis \citep{Tiffany2021}, in which online culture is increasingly dominated by AI-generated content recycling the same statistical patterns, is a direct cultural prediction of our mathematical framework.
 
@@ -423,9 +425,9 @@ Our mathematical framework makes specific, testable predictions about the behavi
 We construct a synthetic aesthetic space $\mathcal{X} = \mathbb{R}^2$ with a known mixture distribution designed to model the key features of real aesthetic data at a tractable scale. Specifically, we define three Gaussian components representing stylised ``aesthetic modes'':
 
 \begin{itemize}
-    \item \textbf{Mode A} (``Dominant''): $\mu_A = (5, 0)$, $\Sigma_A = I$, $\pi_A = 0.70$
-    \item \textbf{Mode B} (``Secondary''): $\mu_B = (-3, 4)$, $\Sigma_B = I$, $\pi_B = 0.20$
-    \item \textbf{Mode C} (``Minority''): $\mu_C = (-2, -5)$, $\Sigma_C = I$, $\pi_C = 0.10$
+ \item \textbf{Mode A} (``Dominant''): $\mu_A = (5, 0)$, $\Sigma_A = I$, $\pi_A = 0.70$
+ \item \textbf{Mode B} (``Secondary''): $\mu_B = (-3, 4)$, $\Sigma_B = I$, $\pi_B = 0.20$
+ \item \textbf{Mode C} (``Minority''): $\mu_C = (-2, -5)$, $\Sigma_C = I$, $\pi_C = 0.10$
 \end{itemize}
 
 This configuration has the following properties relevant to our theoretical predictions: (a) the modes are well-separated ($d_{\mathrm{mode}} = \min_{i \neq j}\|\mu_i - \mu_j\| \approx 7.07$); (b) the prior weights are strongly asymmetric, with Mode A representing 70\% of the statistical mass; and (c) the global mean $\mu_{\mathrm{global}} = 0.7(5,0) + 0.2(-3,4) + 0.1(-2,-5) = (2.7, 0.3)$ lies much closer to Mode A than to Modes B or C, reflecting the gravitational pull of the dominant aesthetic.
@@ -485,28 +487,28 @@ Our theory generates the following quantitative predictions, each of which we te
 We implement the experiment in Python using NumPy and SciPy. The key computational steps are:
 
 \begin{enumerate}
-    \item \textbf{Sampling:} Draw $N$ samples from the three-component Gaussian mixture with the specified parameters.
-    \item \textbf{Forward diffusion:} Add noise at each of 20 logarithmically-spaced noise levels $\sigma_t \in [0.1, 50]$.
-    \item \textbf{Conditional expectation:} Compute $\mathbb{E}[x_0 \mid x_t]$ analytically using the known mixture parameters:
-    $$\mathbb{E}[x_0 \mid x_t] = \sum_{i=1}^k P(C_i \mid x_t)\, \mathbb{E}[x_0 \mid x_t, C_i]$$
-    where each term is computed via Bayes' rule and the Gaussian shrinkage formula (Lemma~\ref{lem:shrinkage}).
-    \item \textbf{Metrics:} Compute the effective support radius (via percentile of distances from mean), diversity index (via kernel density estimation of entropy), and effective dimension (via numerical integration of the squared density).
-    \item \textbf{CFG simulation:} For each guidance scale $w$, compute the modified conditional expectation using the analytical mixture scores.
-    \item \textbf{Visualisation:} Produce scatter plots of original and denoised samples, posterior convergence curves, metric ratio plots, and CFG amplification plots.
+ \item \textbf{Sampling:} Draw $N$ samples from the three-component Gaussian mixture with the specified parameters.
+ \item \textbf{Forward diffusion:} Add noise at each of 20 logarithmically-spaced noise levels $\sigma_t \in [0.1, 50]$.
+ \item \textbf{Conditional expectation:} Compute $\mathbb{E}[x_0 \mid x_t]$ analytically using the known mixture parameters:
+ $$\mathbb{E}[x_0 \mid x_t] = \sum_{i=1}^k P(C_i \mid x_t)\, \mathbb{E}[x_0 \mid x_t, C_i]$$
+ where each term is computed via Bayes' rule and the Gaussian shrinkage formula (Lemma~\ref{lem:shrinkage}).
+ \item \textbf{Metrics:} Compute the effective support radius (via percentile of distances from mean), diversity index (via kernel density estimation of entropy), and effective dimension (via numerical integration of the squared density).
+ \item \textbf{CFG simulation:} For each guidance scale $w$, compute the modified conditional expectation using the analytical mixture scores.
+ \item \textbf{Visualisation:} Produce scatter plots of original and denoised samples, posterior convergence curves, metric ratio plots, and CFG amplification plots.
 \end{enumerate}
 
 The complete Python code for reproducing these experiments is provided in the supplementary materials.
 
 \subsection{Expected results and interpretation}
 
-If our theoretical predictions are confirmed---and the mathematical analysis strongly indicates they will be---the synthetic experiments provide direct empirical validation of the following claims:
+If our theoretical predictions are confirmed - and the mathematical analysis strongly indicates they will be - the synthetic experiments provide direct empirical validation of the following claims:
 
 \begin{enumerate}
-    \item The mode averaging effect is real: conditional expectations under high noise converge to the prior-weighted global mean.
-    \item The training data's demographic and cultural asymmetry is faithfully transmitted through the denoising objective.
-    \item All three measures of aesthetic diversity (support radius, entropy, effective dimension) are reduced by the generative process.
-    \item CFG amplifies these reductions monotonically with guidance scale.
-    \item Minority modes are disproportionately suppressed.
+ \item The mode averaging effect is real: conditional expectations under high noise converge to the prior-weighted global mean.
+ \item The training data's demographic and cultural asymmetry is faithfully transmitted through the denoising objective.
+ \item All three measures of aesthetic diversity (support radius, entropy, effective dimension) are reduced by the generative process.
+ \item CFG amplifies these reductions monotonically with guidance scale.
+ \item Minority modes are disproportionately suppressed.
 \end{enumerate}
 
 These results on synthetic data provide the foundation for the empirical validation on commercial models reported in the following section.
@@ -516,7 +518,7 @@ These results on synthetic data provide the foundation for the empirical validat
 %% ============================================================
 \section{Empirical validation on commercial models}\label{sec:empirical}
 
-The synthetic experiments of the preceding section validate our theoretical predictions under idealised conditions where the ground truth distribution is known. A natural question is whether the same phenomena manifest in commercial text-to-image systems operating on real image distributions in high-dimensional spaces. In this section, we present empirical evidence from two leading commercial models---OpenAI's DALL-E 3 \citep{Betker2023} and Google's Imagen 4 \citep{GoogleImagen2024}---demonstrating that the Mode Averaging Principle's predictions hold in practice.
+The synthetic experiments of the preceding section validate our theoretical predictions under idealised conditions where the ground truth distribution is known. A natural question is whether the same phenomena manifest in commercial text-to-image systems operating on real image distributions in high-dimensional spaces. In this section, we present empirical evidence from two leading commercial models - OpenAI's DALL-E 3 \citep{Betker2023} and Google's Imagen 4 \citep{GoogleImagen2024} - demonstrating that the Mode Averaging Principle's predictions hold in practice.
 
 \subsection{Experimental design}\label{sec:emp_design}
 
@@ -524,7 +526,7 @@ The synthetic experiments of the preceding section validate our theoretical pred
 
 We designed 30 prompts across three categories, each targeting a specific prediction of the MAP framework:
 
-\textit{Cultural identity prompts} ($n = 15$) test prior transmission and minority mode suppression (Theorem~\ref{thm:MAP}, Part 2). Each prompt takes the form ``A photograph of a [nationality] woman,'' with five nationalities designated as \textit{majority} (American, British, French, Australian, Canadian)---selected for their high representation in English-language web-scraped training corpora---and ten as \textit{minority} (Bangladeshi, Nigerian, Peruvian, Mongolian, Maori, Ethiopian, Uzbek, Guatemalan, Samoan, Kurdish)---selected for their low representation. The Bangladeshi prompt provides continuity with the paper's motivating example (Section~\ref{sec:map}).
+\textit{Cultural identity prompts} ($n = 15$) test prior transmission and minority mode suppression (Theorem~\ref{thm:MAP}, Part 2). Each prompt takes the form ``A photograph of a [nationality] woman,'' with five nationalities designated as \textit{majority} (American, British, French, Australian, Canadian) - selected for their high representation in English-language web-scraped training corpora - and ten as \textit{minority} (Bangladeshi, Nigerian, Peruvian, Mongolian, Maori, Ethiopian, Uzbek, Guatemalan, Samoan, Kurdish) - selected for their low representation. The Bangladeshi prompt provides continuity with the paper's motivating example (Section~\ref{sec:map}).
 
 \textit{Open-ended aesthetic prompts} ($n = 10$) test mode averaging under vague conditioning (Corollary~\ref{cor:homogen}). These use deliberately ambiguous prompts such as ``A beautiful landscape,'' ``An ideal home,'' and ``A delicious meal'' that impose minimal constraints on the conditioning distribution, thereby maximising the scope for the model to default to the dominant aesthetic mode.
 
@@ -541,78 +543,78 @@ All generated images were embedded using CLIP ViT-L/14 \citep{Radford2021}, prod
 For each group of images (e.g., all 20 DALL-E 3 images for a given prompt), we computed the three distributional measures defined in Section~\ref{sec:framework}:
 
 \begin{itemize}
-    \item \textbf{Effective support radius} $R_\alpha$: the 90th-percentile distance from the centroid, measuring the spread of the output cluster in embedding space.
-    \item \textbf{Diversity index} $D$: the per-dimension normalised Gaussian-fit entropy $\exp(H/d)$, adapted for high-dimensional stability using log-determinant computation.
-    \item \textbf{Effective dimension} $d_{\mathrm{eff}}$: the participation ratio of the eigenvalue spectrum of the sample covariance, measuring how many independent directions of variation the outputs span.
+ \item \textbf{Effective support radius} $R_\alpha$: the 90th-percentile distance from the centroid, measuring the spread of the output cluster in embedding space.
+ \item \textbf{Diversity index} $D$: the per-dimension normalised Gaussian-fit entropy $\exp(H/d)$, adapted for high-dimensional stability using log-determinant computation.
+ \item \textbf{Effective dimension} $d_{\mathrm{eff}}$: the participation ratio of the eigenvalue spectrum of the sample covariance, measuring how many independent directions of variation the outputs span.
 \end{itemize}
 
-Low values of these metrics indicate that the model's outputs for a given prompt are tightly clustered around a single point in aesthetic space---consistent with the conditional expectation collapsing toward a mode centre, as predicted by the MAP.
+Low values of these metrics indicate that the model's outputs for a given prompt are tightly clustered around a single point in aesthetic space - consistent with the conditional expectation collapsing toward a mode centre, as predicted by the MAP.
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{experiments/empirical/figures/example_generations_grid.png}
-    \caption{Example generations from DALL-E 3 and Imagen 4 for three cultural identity prompts (``A photograph of a [nationality] woman''). Each row shows four independent generations for the same prompt. The within-prompt homogeneity is visually striking: Bangladeshi outputs converge on colourful saris and market or rural settings; American outputs on light-skinned women with casual Western clothing and warm lighting; Nigerian outputs on colourful traditional dress and head wraps. The cross-model convergence between DALL-E 3 and Imagen 4 is equally apparent---independent models trained on different datasets produce aesthetically similar outputs for the same cultural prompt.}
-    \label{fig:example_generations}
+ \centering
+ \includegraphics[width=\textwidth]{experiments/empirical/figures/example_generations_grid.png}
+ \caption{Example generations from DALL-E 3 and Imagen 4 for three cultural identity prompts (``A photograph of a [nationality] woman''). Each row shows four independent generations for the same prompt. The within-prompt homogeneity is visually striking: Bangladeshi outputs converge on colourful saris and market or rural settings; American outputs on light-skinned women with casual Western clothing and warm lighting; Nigerian outputs on colourful traditional dress and head wraps. The cross-model convergence between DALL-E 3 and Imagen 4 is equally apparent - independent models trained on different datasets produce aesthetically similar outputs for the same cultural prompt.}
+ \label{fig:example_generations}
 \end{figure}
 
 \subsection{Analysis 1: Within-prompt diversity}\label{sec:emp_a1}
 
 \textbf{Prediction.} If the model computes an approximate conditional expectation (Theorem~\ref{thm:MAP}), repeated generations from the same prompt should cluster tightly around the conditional mean, producing low within-prompt diversity relative to the full dimensionality of the embedding space.
 
-\textbf{Results.} Across all 30 DALL-E 3 prompts, the mean effective dimension was $d_{\mathrm{eff}} \approx 9.9$ out of 768 CLIP dimensions---a participation ratio of approximately 1.3\%. This indicates that the model's outputs for any given prompt occupy a thin, roughly 10-dimensional subspace of the 768-dimensional embedding space. The remaining 758 dimensions exhibit negligible variance, consistent with the model converging to a near-deterministic conditional mean with only minor stochastic perturbation.
+\textbf{Results.} Across all 30 DALL-E 3 prompts, the mean effective dimension was $d_{\mathrm{eff}} \approx 9.9$ out of 768 CLIP dimensions - a participation ratio of approximately 1.3\%. This indicates that the model's outputs for any given prompt occupy a thin, roughly 10-dimensional subspace of the 768-dimensional embedding space. The remaining 758 dimensions exhibit negligible variance, consistent with the model converging to a near-deterministic conditional mean with only minor stochastic perturbation.
 
 The three prompt categories exhibited systematically different diversity levels (Figure~\ref{fig:empirical_a1}). Open-ended prompts showed the lowest effective dimension ($\bar{R}_\alpha = 0.522$, $\bar{d}_{\mathrm{eff}} = 9.4$), cultural identity prompts were intermediate ($\bar{R}_\alpha = 0.548$, $\bar{d}_{\mathrm{eff}} = 9.9$), and artistic style prompts had the lowest support radius but comparable effective dimension ($\bar{R}_\alpha = 0.425$, $\bar{d}_{\mathrm{eff}} = 9.9$). The low $d_{\mathrm{eff}}$ for open-ended prompts is consistent with the MAP prediction: open-ended prompts impose the weakest constraints on the conditioning distribution, allowing the broadest averaging over modes. When the prompt is maximally vague (e.g., ``A beautiful landscape''), the conditional expectation averages over the widest range of training images, producing the most concentrated output.
 
 The low effective support radius for artistic style prompts ($\bar{R}_\alpha = 0.425$) despite their comparable effective dimension reflects a different phenomenon: the model produces stylistically similar outputs that vary along a few specific dimensions (e.g., colour palette, composition) while being tightly constrained in all others.
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{experiments/empirical/figures/analysis1_within_prompt_diversity.png}
-    \caption{Within-prompt diversity across three prompt categories, measured by effective support radius ($R_\alpha$), diversity index ($D$), and effective dimension ($d_{\mathrm{eff}}$). Open-ended prompts show the lowest diversity, consistent with MAP's prediction that vague conditioning produces stronger averaging. Error bars show standard deviation across prompts within each category.}
-    \label{fig:empirical_a1}
+ \centering
+ \includegraphics[width=\textwidth]{experiments/empirical/figures/analysis1_within_prompt_diversity.png}
+ \caption{Within-prompt diversity across three prompt categories, measured by effective support radius ($R_\alpha$), diversity index ($D$), and effective dimension ($d_{\mathrm{eff}}$). Open-ended prompts show the lowest diversity, consistent with MAP's prediction that vague conditioning produces stronger averaging. Error bars show standard deviation across prompts within each category.}
+ \label{fig:empirical_a1}
 \end{figure}
 
 \subsection{Analysis 2: Minority mode suppression}\label{sec:emp_a2}
 
-\textbf{Prediction.} The MAP's prior transmission property (Theorem~\ref{thm:MAP}, Part 2) predicts that minority nationalities---with lower statistical mass in the training data---should exhibit lower within-prompt diversity than majority nationalities, because their outputs are pulled more strongly toward the global aesthetic mean.
+\textbf{Prediction.} The MAP's prior transmission property (Theorem~\ref{thm:MAP}, Part 2) predicts that minority nationalities - with lower statistical mass in the training data - should exhibit lower within-prompt diversity than majority nationalities, because their outputs are pulled more strongly toward the global aesthetic mean.
 
-\textbf{Results.} Majority nationalities exhibited a mean within-prompt support radius of $\bar{R}_\alpha = 0.618$, compared to $\bar{R}_\alpha = 0.514$ for minority nationalities---a ratio of 0.83, meaning minority representations are approximately 17\% less diverse than majority representations (Figure~\ref{fig:empirical_a2}).
+\textbf{Results.} Majority nationalities exhibited a mean within-prompt support radius of $\bar{R}_\alpha = 0.618$, compared to $\bar{R}_\alpha = 0.514$ for minority nationalities - a ratio of 0.83, meaning minority representations are approximately 17\% less diverse than majority representations (Figure~\ref{fig:empirical_a2}).
 
 To assess statistical significance, we applied both a permutation test and bootstrap confidence intervals \citep{Efron1993, Good2000}. The permutation test (10{,}000 permutations) for the null hypothesis that majority and minority $R_\alpha$ values are drawn from the same distribution yielded a one-sided $p$-value testing whether majority diversity exceeds minority diversity. The 95\% bootstrap confidence interval for the difference in means ($\bar{R}_\alpha^{\mathrm{majority}} - \bar{R}_\alpha^{\mathrm{minority}}$) was computed over 10{,}000 resamples.
 
-This result directly confirms MAP's prediction: cultures with lower statistical mass in the training data are represented with less diversity in the output space. The model does not merely underrepresent minority cultures in frequency; it homogenises their representations more aggressively, compressing the aesthetic variation within each minority prompt into a tighter cluster around the conditional mean. This is the empirical signature of the ``statistical monoculture'' described in Section~\ref{sec:culture}: minority cultures are not just less likely to appear---when they do appear, they are rendered with less internal diversity, reflecting the stronger gravitational pull of the dominant mode.
+This result directly confirms MAP's prediction: cultures with lower statistical mass in the training data are represented with less diversity in the output space. The model does not merely underrepresent minority cultures in frequency; it homogenises their representations more aggressively, compressing the aesthetic variation within each minority prompt into a tighter cluster around the conditional mean. This is the empirical signature of the ``statistical monoculture'' described in Section~\ref{sec:culture}: minority cultures are not just less likely to appear - when they do appear, they are rendered with less internal diversity, reflecting the stronger gravitational pull of the dominant mode.
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{experiments/empirical/figures/analysis2_cultural_convergence.png}
-    \caption{Within-prompt diversity ($R_\alpha$) for cultural identity prompts, grouped by majority (blue) and minority (red) nationalities. Majority nationalities consistently exhibit higher within-prompt diversity, confirming MAP's prediction that minority modes are subject to stronger averaging toward the global mean.}
-    \label{fig:empirical_a2}
+ \centering
+ \includegraphics[width=\textwidth]{experiments/empirical/figures/analysis2_cultural_convergence.png}
+ \caption{Within-prompt diversity ($R_\alpha$) for cultural identity prompts, grouped by majority (blue) and minority (red) nationalities. Majority nationalities consistently exhibit higher within-prompt diversity, confirming MAP's prediction that minority modes are subject to stronger averaging toward the global mean.}
+ \label{fig:empirical_a2}
 \end{figure}
 
-The cross-cultural distance heatmap (Figure~\ref{fig:empirical_heatmap}) reveals an additional pattern: the pairwise cosine distances between nationality centroids are remarkably compressed. In a diverse representational space, one would expect nationality-specific centroids to be well-separated, reflecting genuine cultural and aesthetic differences. Instead, the centroids are clustered together, indicating that the model's representations of different nationalities converge toward a shared aesthetic centre---precisely the statistical monoculture predicted by the MAP.
+The cross-cultural distance heatmap (Figure~\ref{fig:empirical_heatmap}) reveals an additional pattern: the pairwise cosine distances between nationality centroids are remarkably compressed. In a diverse representational space, one would expect nationality-specific centroids to be well-separated, reflecting genuine cultural and aesthetic differences. Instead, the centroids are clustered together, indicating that the model's representations of different nationalities converge toward a shared aesthetic centre - precisely the statistical monoculture predicted by the MAP.
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=0.9\textwidth]{experiments/empirical/figures/analysis2_cultural_heatmap_openai.png}
-    \caption{Pairwise cosine distance between nationality centroids in CLIP embedding space (DALL-E 3). The compressed distances indicate convergence toward a shared aesthetic centre across nationalities, consistent with the mode averaging prediction.}
-    \label{fig:empirical_heatmap}
+ \centering
+ \includegraphics[width=0.9\textwidth]{experiments/empirical/figures/analysis2_cultural_heatmap_openai.png}
+ \caption{Pairwise cosine distance between nationality centroids in CLIP embedding space (DALL-E 3). The compressed distances indicate convergence toward a shared aesthetic centre across nationalities, consistent with the mode averaging prediction.}
+ \label{fig:empirical_heatmap}
 \end{figure}
 
 \subsection{Analysis 3: Cross-model convergence}\label{sec:emp_a3}
 
 \textbf{Prediction.} The compound convergence framework (Section~\ref{sec:compound}) predicts that different models trained on overlapping data distributions should converge to similar conditional expectations for the same prompts, because they are computing approximate averages over approximately the same distribution.
 
-\textbf{Results.} Across all 30 prompts for which both DALL-E 3 and Imagen 4 outputs were available, the mean cosine similarity between per-prompt centroids was 0.859 (range: 0.729--0.946; Figure~\ref{fig:empirical_a3}). This remarkably high cross-model agreement indicates that the two models---developed by different companies, using different architectures, and trained on different (but overlapping) datasets---produce outputs that occupy nearly the same region of semantic space for each prompt.
+\textbf{Results.} Across all 30 prompts for which both DALL-E 3 and Imagen 4 outputs were available, the mean cosine similarity between per-prompt centroids was 0.859 (range: 0.729--0.946; Figure~\ref{fig:empirical_a3}). This remarkably high cross-model agreement indicates that the two models - developed by different companies, using different architectures, and trained on different (but overlapping) datasets - produce outputs that occupy nearly the same region of semantic space for each prompt.
 
 A cosine similarity of 0.859 in a 768-dimensional space is striking. For comparison, random unit vectors in $\mathbb{R}^{768}$ have expected cosine similarity near zero with standard deviation approximately $1/\sqrt{768} \approx 0.036$. The observed agreement is thus approximately 24 standard deviations above what would be expected by chance, confirming that the convergence is substantive rather than artefactual.
 
-This finding supports the compound convergence hypothesis: when multiple models are trained on web-scraped corpora with substantial overlap, the conditional expectation operator drives each model toward a similar statistical centre for each prompt. The agreement is not merely in the broad semantic content of the images (both produce ``a photograph of a Bangladeshi woman'') but in the specific aesthetic details: similar poses, lighting, clothing, colour palettes, and compositional choices. This is the cross-model manifestation of SLOP---a shared ``AI aesthetic'' that transcends any individual model or company.
+This finding supports the compound convergence hypothesis: when multiple models are trained on web-scraped corpora with substantial overlap, the conditional expectation operator drives each model toward a similar statistical centre for each prompt. The agreement is not merely in the broad semantic content of the images (both produce ``a photograph of a Bangladeshi woman'') but in the specific aesthetic details: similar poses, lighting, clothing, colour palettes, and compositional choices. This is the cross-model manifestation of SLOP - a shared ``AI aesthetic'' that transcends any individual model or company.
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{experiments/empirical/figures/analysis3_cross_model_agreement.png}
-    \caption{Cross-model agreement between DALL-E 3 and Imagen 4, measured as cosine similarity between per-prompt centroids in CLIP embedding space across all 30 prompts. The high mean similarity (0.859) confirms that different commercial models converge to similar aesthetic centres for the same prompts, consistent with the compound convergence prediction.}
-    \label{fig:empirical_a3}
+ \centering
+ \includegraphics[width=\textwidth]{experiments/empirical/figures/analysis3_cross_model_agreement.png}
+ \caption{Cross-model agreement between DALL-E 3 and Imagen 4, measured as cosine similarity between per-prompt centroids in CLIP embedding space across all 30 prompts. The high mean similarity (0.859) confirms that different commercial models converge to similar aesthetic centres for the same prompts, consistent with the compound convergence prediction.}
+ \label{fig:empirical_a3}
 \end{figure}
 
 \subsection{Summary of empirical findings}
@@ -635,14 +637,14 @@ Cross-model convergence & $\cos = 0.859$ (30 prompts) & Confirmed \\
 \end{tabular}
 \end{table}
 
-These results demonstrate that the mathematical mechanisms identified in our theoretical analysis---mode averaging, prior transmission, minority suppression, and cross-model convergence---are not merely properties of idealised synthetic distributions but observable features of state-of-the-art commercial image generation systems.
+These results demonstrate that the mathematical mechanisms identified in our theoretical analysis - mode averaging, prior transmission, minority suppression, and cross-model convergence - are not merely properties of idealised synthetic distributions but observable features of state-of-the-art commercial image generation systems.
 
 %% ============================================================
 %% SECTION 8: ABLATION STUDY
 %% ============================================================
 \section{Ablation study: disentangling the objective function from preference training}\label{sec:ablation}
 
-The empirical results of Section~\ref{sec:empirical} demonstrate that commercial text-to-image systems exhibit the homogenisation patterns predicted by the Mode Averaging Principle. However, a natural objection arises: commercial models such as DALL-E 3 and Imagen 4 undergo extensive post-training with human feedback---reinforcement learning from human feedback (RLHF) or direct preference optimisation (DPO)---which could independently drive homogenisation by rewarding outputs that match majority aesthetic preferences. Content filtering, data curation, and safety classifiers may further narrow the output distribution. The empirical results of Section~\ref{sec:empirical} are therefore \textit{consistent with} the MAP framework but do not, on their own, establish that the MSE objective is the primary cause. The observed homogenisation could, in principle, be driven primarily by preference training rather than the denoising objective itself.
+The empirical results of Section~\ref{sec:empirical} demonstrate that commercial text-to-image systems exhibit the homogenisation patterns predicted by the Mode Averaging Principle. However, a natural objection arises: commercial models such as DALL-E 3 and Imagen 4 undergo extensive post-training with human feedback - reinforcement learning from human feedback (RLHF) or direct preference optimisation (DPO) - which could independently drive homogenisation by rewarding outputs that match majority aesthetic preferences. Content filtering, data curation, and safety classifiers may further narrow the output distribution. The empirical results of Section~\ref{sec:empirical} are therefore \textit{consistent with} the MAP framework but do not, on their own, establish that the MSE objective is the primary cause. The observed homogenisation could, in principle, be driven primarily by preference training rather than the denoising objective itself.
 
 To disentangle these factors, we conduct an ablation study using open-source models whose training pipelines are fully transparent and whose components can be isolated. This experiment directly addresses the question: does the homogenisation pattern emerge from the MSE objective alone, or does it require preference training?
 
@@ -653,8 +655,8 @@ To disentangle these factors, we conduct an ablation study using open-source mod
 We compare two variants of Stable Diffusion XL (SDXL) \citep{Podell2023}:
 
 \begin{itemize}
-    \item \textbf{SDXL Base}: The base model trained exclusively with the standard noise-prediction (MSE) objective on the LAION-5B dataset. This model has received \textit{no} preference training, no RLHF, no DPO, and no human aesthetic filtering. It represents the pure effect of the MSE denoising objective operating on web-scraped training data.
-    \item \textbf{SDXL + DPO}: The same base model with a UNet fine-tuned using Direct Preference Optimisation \citep{Rafailov2023}, a preference training method in which a reward model learned from human aesthetic judgements is distilled into the generation process. This variant adds a preference-training signal on top of the MSE objective, allowing us to isolate the marginal contribution of preference training.
+ \item \textbf{SDXL Base}: The base model trained exclusively with the standard noise-prediction (MSE) objective on the LAION-5B dataset. This model has received \textit{no} preference training, no RLHF, no DPO, and no human aesthetic filtering. It represents the pure effect of the MSE denoising objective operating on web-scraped training data.
+ \item \textbf{SDXL + DPO}: The same base model with a UNet fine-tuned using Direct Preference Optimisation \citep{Rafailov2023}, a preference training method in which a reward model learned from human aesthetic judgements is distilled into the generation process. This variant adds a preference-training signal on top of the MSE objective, allowing us to isolate the marginal contribution of preference training.
 \end{itemize}
 
 The critical feature of this comparison is that both models share the same architecture, the same base training data, and the same noise schedule. The \textit{only} systematic difference is the presence or absence of preference training. Any homogenisation observed in the base model cannot be attributed to RLHF or DPO; it must arise from the MSE objective, the training data, or their interaction.
@@ -679,25 +681,25 @@ All images were embedded using the same CLIP ViT-L/14 pipeline as Section~\ref{s
 
 Figure~\ref{fig:ablation_cfg} shows the mean effective support radius $\bar{R}_\alpha$ and mean effective dimension $\bar{d}_{\mathrm{eff}}$ as a function of guidance scale, averaged across all 11 prompts, for both model variants.
 
-Both metrics decrease monotonically with guidance scale in both models. For the base model, mean $R_\alpha$ drops from 0.586 at $w = 1.0$ to 0.407 at $w = 15.0$---a 30.5\% reduction in output diversity attributable entirely to the guidance mechanism. The effective dimension follows the same pattern, declining from 7.06 to 5.59. The DPO model exhibits an identical monotonic trend (mean $R_\alpha$ from 0.542 to 0.403; $d_{\mathrm{eff}}$ from 6.63 to 5.46), with consistently lower diversity at every guidance scale.
+Both metrics decrease monotonically with guidance scale in both models. For the base model, mean $R_\alpha$ drops from 0.586 at $w = 1.0$ to 0.407 at $w = 15.0$ - a 30.5\% reduction in output diversity attributable entirely to the guidance mechanism. The effective dimension follows the same pattern, declining from 7.06 to 5.59. The DPO model exhibits an identical monotonic trend (mean $R_\alpha$ from 0.542 to 0.403; $d_{\mathrm{eff}}$ from 6.63 to 5.46), with consistently lower diversity at every guidance scale.
 
 This result provides direct empirical confirmation of Proposition~\ref{prop:cfg}: classifier-free guidance amplifies mode concentration monotonically, and the effect is robust across both the base and preference-trained models.
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{experiments/empirical/ablation/figures/ablation_cfg_scale.png}
-    \caption{Mean effective support radius ($\bar{R}_\alpha$) and mean effective dimension ($\bar{d}_{\mathrm{eff}}$) as a function of classifier-free guidance scale for SDXL Base (no preference training) and SDXL + DPO (with preference training). Both metrics decrease monotonically with guidance scale in both models, confirming Proposition~\ref{prop:cfg}'s prediction. The DPO model shows consistently lower diversity at every guidance scale, indicating that preference training compounds the CFG effect.}
-    \label{fig:ablation_cfg}
+ \centering
+ \includegraphics[width=\textwidth]{experiments/empirical/ablation/figures/ablation_cfg_scale.png}
+ \caption{Mean effective support radius ($\bar{R}_\alpha$) and mean effective dimension ($\bar{d}_{\mathrm{eff}}$) as a function of classifier-free guidance scale for SDXL Base (no preference training) and SDXL + DPO (with preference training). Both metrics decrease monotonically with guidance scale in both models, confirming Proposition~\ref{prop:cfg}'s prediction. The DPO model shows consistently lower diversity at every guidance scale, indicating that preference training compounds the CFG effect.}
+ \label{fig:ablation_cfg}
 \end{figure}
 
 \subsubsection{The majority/minority gap exists without preference training}
 
-This is the central result of the ablation. Averaging across all four guidance scales, the SDXL base model---which has received no preference training---exhibits a majority/minority diversity gap of 24.2\%:
+This is the central result of the ablation. Averaging across all four guidance scales, the SDXL base model - which has received no preference training - exhibits a majority/minority diversity gap of 24.2\%:
 
 \begin{itemize}
-    \item Majority cultural identities: $\bar{R}_\alpha = 0.485$
-    \item Minority cultural identities: $\bar{R}_\alpha = 0.368$
-    \item Gap: $0.117$ ($24.2\%$)
+ \item Majority cultural identities: $\bar{R}_\alpha = 0.485$
+ \item Minority cultural identities: $\bar{R}_\alpha = 0.368$
+ \item Gap: $0.117$ ($24.2\%$)
 \end{itemize}
 
 This gap is substantial and consistent across all four guidance scales (Figure~\ref{fig:ablation_gap}). Even at $w = 1.0$ (unguided generation), where CFG contributes no additional compression, the base model produces majority representations that are more diverse than minority representations.
@@ -705,18 +707,18 @@ This gap is substantial and consistent across all four guidance scales (Figure~\
 Adding preference training via DPO widens the gap modestly, from 24.2\% to 27.5\%:
 
 \begin{itemize}
-    \item Majority cultural identities: $\bar{R}_\alpha = 0.469$
-    \item Minority cultural identities: $\bar{R}_\alpha = 0.340$
-    \item Gap: $0.129$ ($27.5\%$)
+ \item Majority cultural identities: $\bar{R}_\alpha = 0.469$
+ \item Minority cultural identities: $\bar{R}_\alpha = 0.340$
+ \item Gap: $0.129$ ($27.5\%$)
 \end{itemize}
 
 Of the total gap observed in the DPO model, approximately 91\% ($0.117 / 0.129$) is already present in the base model. Preference training contributes only the remaining 9\%.
 
 \begin{figure}[t]
-    \centering
-    \includegraphics[width=\textwidth]{experiments/empirical/ablation/figures/ablation_base_vs_dpo.png}
-    \caption{Majority vs.\ minority effective support radius ($R_\alpha$) for SDXL Base and SDXL + DPO, averaged across all guidance scales. The majority/minority gap is present in both models, with the base model exhibiting 91\% of the gap observed in the preference-trained variant. This supports the MSE objective as the primary structural driver of minority mode suppression.}
-    \label{fig:ablation_gap}
+ \centering
+ \includegraphics[width=\textwidth]{experiments/empirical/ablation/figures/ablation_base_vs_dpo.png}
+ \caption{Majority vs.\ minority effective support radius ($R_\alpha$) for SDXL Base and SDXL + DPO, averaged across all guidance scales. The majority/minority gap is present in both models, with the base model exhibiting 91\% of the gap observed in the preference-trained variant. This supports the MSE objective as the primary structural driver of minority mode suppression.}
+ \label{fig:ablation_gap}
 \end{figure}
 
 \subsubsection{Decomposing the sources of homogenisation}
@@ -769,21 +771,21 @@ Fifth, we develop an interpretive framework (SLOP) that connects these mathemati
 
 \subsection{On the novelty of the conditional expectation result}\label{sec:novelty}
 
-It is well known in the machine learning literature that the MSE-optimal denoiser computes a conditional expectation, and that conditional expectations average over the posterior. A reader familiar with this fact might ask what is new in the present work. The answer is not the mathematical identity itself but its \textit{cultural consequence}, which---to our knowledge---has not previously been formalised.
+It is well known in the machine learning literature that the MSE-optimal denoiser computes a conditional expectation, and that conditional expectations average over the posterior. A reader familiar with this fact might ask what is new in the present work. The answer is not the mathematical identity itself but its \textit{cultural consequence}, which - to our knowledge - has not previously been formalised.
 
-The standard interpretation of the conditional expectation property is technical: it explains why diffusion models produce ``blurry'' outputs at high noise levels and motivates the use of guidance and multi-step sampling to sharpen results. Our contribution is to recognise that this same operator, when applied to a training distribution with unequal cultural representation, functions as a mechanism of systematic aesthetic erasure. The conditional expectation does not merely ``blur'' an image; it computes a probability-weighted average over all aesthetic traditions consistent with the prompt, in which each tradition's influence is proportional to its statistical mass in the training data. Minority cultural expressions---those with low statistical mass---are not just underrepresented in the output; they are actively \textit{averaged away} by the very objective function used to train the model.
+The standard interpretation of the conditional expectation property is technical: it explains why diffusion models produce ``blurry'' outputs at high noise levels and motivates the use of guidance and multi-step sampling to sharpen results. Our contribution is to recognise that this same operator, when applied to a training distribution with unequal cultural representation, functions as a mechanism of systematic aesthetic erasure. The conditional expectation does not merely ``blur'' an image; it computes a probability-weighted average over all aesthetic traditions consistent with the prompt, in which each tradition's influence is proportional to its statistical mass in the training data. Minority cultural expressions - those with low statistical mass - are not just underrepresented in the output; they are actively \textit{averaged away} by the very objective function used to train the model.
 
-This reframing has a critical practical implication: it demonstrates that aesthetic homogenisation cannot be fully resolved by debiasing training data alone. Even a perfectly representative dataset, if processed through an MSE-trained denoiser, would still produce outputs gravitating toward conditional means rather than sampling from the full conditional distribution. The ablation study (Section~\ref{sec:ablation}) provides direct evidence for this claim: 91\% of the majority/minority diversity gap is present in a base model with no preference training, indicating that the denoising objective is the primary structural driver. The problem is not exclusively in the data but in the calculus---in the mathematical structure of the optimisation objective. Recognising this shifts the locus of intervention from data curation (necessary but insufficient) to architectural and objective-function redesign.
+This reframing has a critical practical implication: it demonstrates that aesthetic homogenisation cannot be fully resolved by debiasing training data alone. Even a perfectly representative dataset, if processed through an MSE-trained denoiser, would still produce outputs gravitating toward conditional means rather than sampling from the full conditional distribution. The ablation study (Section~\ref{sec:ablation}) provides direct evidence for this claim: 91\% of the majority/minority diversity gap is present in a base model with no preference training, indicating that the denoising objective is the primary structural driver. The problem is not exclusively in the data but in the calculus - in the mathematical structure of the optimisation objective. Recognising this shifts the locus of intervention from data curation (necessary but insufficient) to architectural and objective-function redesign.
 
 \subsection{The empirical signature of statistical monoculture}\label{sec:signature}
 
 The mathematical framework developed in Sections~\ref{sec:framework}--\ref{sec:compound} makes precise, falsifiable predictions. The empirical results of Section~\ref{sec:empirical} confirm each of them, and three findings deserve particular emphasis for their clarity and scale.
 
-\textit{The dimensional collapse.} When prompted with the same text, a generative model could in principle produce images varying along hundreds of independent visual dimensions---colour, composition, lighting, pose, clothing, setting, artistic style. Instead, we find that the outputs occupy approximately 10 effective dimensions out of 768. The model discards over 98\% of the aesthetic variation available to it, converging on a narrow corridor of visual possibility. This is not a subtle statistical effect; it is a dramatic compression of the creative space, and it is a direct consequence of the conditional expectation operator computing a weighted average rather than sampling from the full distribution.
+\textit{The dimensional collapse.} When prompted with the same text, a generative model could in principle produce images varying along hundreds of independent visual dimensions - colour, composition, lighting, pose, clothing, setting, artistic style. Instead, we find that the outputs occupy approximately 10 effective dimensions out of 768. The model discards over 98\% of the aesthetic variation available to it, converging on a narrow corridor of visual possibility. This is not a subtle statistical effect; it is a dramatic compression of the creative space, and it is a direct consequence of the conditional expectation operator computing a weighted average rather than sampling from the full distribution.
 
-\textit{The minority suppression gap.} The theory predicts that cultures with less representation in training data will be rendered with less internal diversity---not merely appearing less often, but appearing more \textit{uniformly} when they do appear. The data confirm this: minority cultural representations are 17\% less diverse than majority ones ($p = 0.0002$, Cohen's $d = 1.61$). In concrete terms, if you ask two different models to generate ``a photograph of an American woman,'' you will see meaningful variation in age, clothing, setting, and pose; ask for ``a photograph of a Bangladeshi woman,'' and the outputs converge on a narrower set of visual tropes---colourful saris, market settings, ceremonial contexts. The model is not representing a culture; it is reproducing a stereotype, and the mathematics of conditional expectation explain precisely why.
+\textit{The minority suppression gap.} The theory predicts that cultures with less representation in training data will be rendered with less internal diversity - not merely appearing less often, but appearing more \textit{uniformly} when they do appear. The data confirm this: minority cultural representations are 17\% less diverse than majority ones ($p = 0.0002$, Cohen's $d = 1.61$). In concrete terms, if you ask two different models to generate ``a photograph of an American woman,'' you will see meaningful variation in age, clothing, setting, and pose; ask for ``a photograph of a Bangladeshi woman,'' and the outputs converge on a narrower set of visual tropes - colourful saris, market settings, ceremonial contexts. The model is not representing a culture; it is reproducing a stereotype, and the mathematics of conditional expectation explain precisely why.
 
-\textit{The cross-model convergence.} Perhaps the most striking finding is that DALL-E 3 and Imagen 4---built by different companies, using different architectures, trained on different datasets---produce outputs with 0.86 cosine similarity in a 768-dimensional space across all 30 prompts. To put this in perspective: two random vectors in this space would have expected similarity near zero. The observed agreement is approximately 24 standard deviations above chance. This is the empirical signature of statistical monoculture: when independent systems are trained with the same mathematical objective on overlapping samples of the same internet, they converge to the same aesthetic centre. The homogenisation is not a property of any single model; it is a property of the method.
+\textit{The cross-model convergence.} Perhaps the most striking finding is that DALL-E 3 and Imagen 4 - built by different companies, using different architectures, trained on different datasets - produce outputs with 0.86 cosine similarity in a 768-dimensional space across all 30 prompts. To put this in perspective: two random vectors in this space would have expected similarity near zero. The observed agreement is approximately 24 standard deviations above chance. This is the empirical signature of statistical monoculture: when independent systems are trained with the same mathematical objective on overlapping samples of the same internet, they converge to the same aesthetic centre. The homogenisation is not a property of any single model; it is a property of the method.
 
 The ablation study (Section~\ref{sec:ablation}) closes the remaining explanatory gap. One could object that the commercial model results are driven by preference training rather than the MSE objective. The ablation demonstrates otherwise: a base model with no RLHF or DPO already shows a 24.2\% majority/minority gap, and CFG monotonically amplifies homogenisation at every guidance scale. Of the total gap in the preference-trained model, 91\% is attributable to the MSE objective and training data, with preference training contributing only the remaining 9\%. This decomposition establishes a clear hierarchy of causes: the denoising objective is the primary structural driver, CFG amplifies it, and RLHF compounds it modestly.
 
@@ -793,31 +795,31 @@ Taken together, these findings close the loop between theory and observation. Th
 
 Our analysis has several limitations that should be acknowledged.
 
-\textit{The Gaussian mixture assumption.} Our proofs rely on Assumption~\ref{assum:mixture}, which models the training distribution as a finite Gaussian mixture. Real aesthetic data has far more complex structure: modes are not Gaussian, boundaries between modes are not sharp, and the number of meaningful modes is not well-defined. However, the core mechanism---that conditional expectation averages, and averaging suppresses low-weight components---holds for any distribution, not just Gaussian mixtures. The mixture model provides a tractable setting for proof, and we expect the qualitative conclusions to generalise.
+\textit{The Gaussian mixture assumption.} Our proofs rely on Assumption~\ref{assum:mixture}, which models the training distribution as a finite Gaussian mixture. Real aesthetic data has far more complex structure: modes are not Gaussian, boundaries between modes are not sharp, and the number of meaningful modes is not well-defined. However, the core mechanism - that conditional expectation averages, and averaging suppresses low-weight components - holds for any distribution, not just Gaussian mixtures. The mixture model provides a tractable setting for proof, and we expect the qualitative conclusions to generalise.
 
 \textit{The optimal denoiser assumption.} Theorem~\ref{thm:MAP} characterises the optimal denoiser (the true conditional expectation), but real neural networks are finite-capacity approximations trained with stochastic optimisation. The gap between the optimal and learned denoiser introduces both additional noise and potentially different failure modes. Proposition~\ref{prop:lockin} partially addresses the connection to actual outputs, but a fully rigorous end-to-end analysis remains open.
 
-\textit{Scale of empirical validation.} Our empirical validation on commercial models (Section~\ref{sec:empirical}) provides evidence from 1{,}177 images across two models and all 30 prompts, using CLIP embeddings as a proxy for aesthetic space. While this confirms the qualitative predictions of our framework with statistical significance ($p = 0.0002$ for the majority/minority gap, Cohen's $d = 1.61$), a larger-scale study with additional models---including open-source systems such as Stable Diffusion and Midjourney---higher per-prompt sample sizes, and culturally annotated ground-truth datasets would strengthen the quantitative conclusions.
+\textit{Scale of empirical validation.} Our empirical validation on commercial models (Section~\ref{sec:empirical}) provides evidence from 1{,}177 images across two models and all 30 prompts, using CLIP embeddings as a proxy for aesthetic space. While this confirms the qualitative predictions of our framework with statistical significance ($p = 0.0002$ for the majority/minority gap, Cohen's $d = 1.61$), a larger-scale study with additional models - including open-source systems such as Stable Diffusion and Midjourney - higher per-prompt sample sizes, and culturally annotated ground-truth datasets would strengthen the quantitative conclusions.
 
-\textit{The CLIP embedding proxy.} Our empirical metrics rely on CLIP ViT-L/14 embeddings as a proxy for aesthetic space. A potential concern is circularity: CLIP was itself trained on web-scraped image-text pairs \citep{Radford2021} and may share the same Western-centric distributional biases as the generative models under study. If CLIP's representational geometry compresses non-Western aesthetics into a smaller region of embedding space, some portion of the observed dimensional collapse could reflect the measurement instrument rather than the generative process. To assess this, we replicated the full analysis using DINOv2 ViT-L/14 \citep{Oquab2024}, a self-supervised vision model trained on images alone with no text-image alignment objective. Under DINOv2 embeddings, the majority/minority $R_\alpha$ gap shrinks from 17.0\% (CLIP) to 7.9\%, and the $d_{\mathrm{eff}}$ gap disappears entirely. The Pearson correlation between CLIP and DINOv2 $R_\alpha$ values is 0.60, indicating moderate but not strong agreement. This suggests that CLIP does inflate the measured homogenisation effect---likely because its text-image training imposes additional structure that compresses semantically similar concepts---but the core pattern of minority suppression persists even in a text-free embedding space. We report the CLIP-based results as our primary analysis for comparability with prior work, but acknowledge that the true magnitude of the effect likely lies between the CLIP and DINOv2 estimates.
+\textit{The CLIP embedding proxy.} Our empirical metrics rely on CLIP ViT-L/14 embeddings as a proxy for aesthetic space. A potential concern is circularity: CLIP was itself trained on web-scraped image-text pairs \citep{Radford2021} and may share the same Western-centric distributional biases as the generative models under study. If CLIP's representational geometry compresses non-Western aesthetics into a smaller region of embedding space, some portion of the observed dimensional collapse could reflect the measurement instrument rather than the generative process. To assess this, we replicated the full analysis using DINOv2 ViT-L/14 \citep{Oquab2024}, a self-supervised vision model trained on images alone with no text-image alignment objective. Under DINOv2 embeddings, the majority/minority $R_\alpha$ gap shrinks from 17.0\% (CLIP) to 7.9\%, and the $d_{\mathrm{eff}}$ gap disappears entirely. The Pearson correlation between CLIP and DINOv2 $R_\alpha$ values is 0.60, indicating moderate but not strong agreement. This suggests that CLIP does inflate the measured homogenisation effect - likely because its text-image training imposes additional structure that compresses semantically similar concepts - but the core pattern of minority suppression persists even in a text-free embedding space. We report the CLIP-based results as our primary analysis for comparability with prior work, but acknowledge that the true magnitude of the effect likely lies between the CLIP and DINOv2 estimates.
 
-\textit{Ablation study scope.} The ablation (Section~\ref{sec:ablation}) uses SDXL as a representative open-source diffusion model, but SDXL is one architecture trained on one dataset (LAION-5B). The extent to which the observed decomposition (91\% MSE, 9\% preference training) generalises to other architectures, training datasets, and preference optimisation methods remains an open question. Additionally, we cannot fully disentangle the MSE objective from the training data: the base model's homogenisation could reflect biased data processed through a neutral objective, a neutral dataset processed through a biased objective, or (most likely) their interaction. Our theoretical framework argues that the MSE objective would produce mode averaging even on a perfectly balanced dataset, but verifying this empirically would require a controlled dataset with known cultural balance---an important direction for future work.
+\textit{Ablation study scope.} The ablation (Section~\ref{sec:ablation}) uses SDXL as a representative open-source diffusion model, but SDXL is one architecture trained on one dataset (LAION-5B). The extent to which the observed decomposition (91\% MSE, 9\% preference training) generalises to other architectures, training datasets, and preference optimisation methods remains an open question. Additionally, we cannot fully disentangle the MSE objective from the training data: the base model's homogenisation could reflect biased data processed through a neutral objective, a neutral dataset processed through a biased objective, or (most likely) their interaction. Our theoretical framework argues that the MSE objective would produce mode averaging even on a perfectly balanced dataset, but verifying this empirically would require a controlled dataset with known cultural balance - an important direction for future work.
 
 \textit{Text conditioning.} Our analysis treats the prompt $c$ as selecting a subset of modes, but real text-to-image conditioning involves complex cross-attention mechanisms operating in latent space \citep{Rombach2022}. The interaction between text conditioning, mode averaging, and CFG in this richer setting deserves separate study.
 
 \subsection{Implications for generative AI design}
 
-A central implication of our analysis is that mitigating aesthetic homogenisation requires interventions at multiple levels of the generative pipeline, because the convergence toward statistical monoculture is driven by three distinct and reinforcing forces. Addressing only one---as current debiasing efforts typically do by focusing on training data alone---leaves the other two forces intact and the fundamental dynamic largely unchanged.
+A central implication of our analysis is that mitigating aesthetic homogenisation requires interventions at multiple levels of the generative pipeline, because the convergence toward statistical monoculture is driven by three distinct and reinforcing forces. Addressing only one - as current debiasing efforts typically do by focusing on training data alone - leaves the other two forces intact and the fundamental dynamic largely unchanged.
 
 Our ablation study (Section~\ref{sec:ablation}) provides a concrete decomposition of the problem: the MSE objective accounts for the majority of the homogenisation, CFG amplifies it substantially, and preference training adds a further layer. This decomposition identifies three distinct intervention points, in order of structural importance.
 
-The most direct intervention targets the denoising objective itself. Because MSE training compels the model to learn a conditional expectation---an averaging operator by mathematical construction---any loss function that rewards distributional fidelity rather than point prediction could, in principle, counteract the mode-averaging tendency. Adversarial training objectives that penalise mode collapse, or repulsive terms in the diffusion SDE that push generated samples away from the distribution mean, represent promising directions. The challenge is practical: MSE training is computationally efficient and stable, and alternatives must match these properties to be viable at scale. Nevertheless, our analysis identifies the loss function as the primary structural lever, and we suggest that research into diversity-preserving objectives deserves priority.
+The most direct intervention targets the denoising objective itself. Because MSE training compels the model to learn a conditional expectation - an averaging operator by mathematical construction - any loss function that rewards distributional fidelity rather than point prediction could, in principle, counteract the mode-averaging tendency. Adversarial training objectives that penalise mode collapse, or repulsive terms in the diffusion SDE that push generated samples away from the distribution mean, represent promising directions. The challenge is practical: MSE training is computationally efficient and stable, and alternatives must match these properties to be viable at scale. Nevertheless, our analysis identifies the loss function as the primary structural lever, and we suggest that research into diversity-preserving objectives deserves priority.
 
 Classifier-free guidance presents a second intervention point. Our ablation confirms that CFG monotonically amplifies the averaging effect (Section~\ref{sec:ablation_results}), reducing mean output diversity by 30.5\% as guidance increases from $w = 1$ to $w = 15$. The very mechanism that makes outputs look ``better'' also makes them more homogeneous. One approach would be diversity-aware guidance schedules that vary the guidance scale across timesteps: using high guidance at low noise levels (where structural coherence matters) and reduced guidance at high noise levels (where the mode-averaging effect is strongest). This would preserve prompt fidelity without intensifying the contraction toward a single aesthetic centre.
 
-The recursive contamination dynamic is perhaps the most difficult to address, because it operates across model generations and involves the broader ecosystem of web-scraped training data. Data provenance tracking and synthetic content filtering can reduce the fraction of AI-generated material entering future training sets. Frameworks such as DiverGen \citep{Chang2024} and intelligent oversampling of underrepresented modes can counteract the uneven statistical mass that powers the prior transmission effect. More fundamentally, active curation of culturally diverse, high-quality training data---moving beyond passive web scraping toward partnerships with cultural institutions, indigenous communities, and non-Western media archives---is essential if the training distribution is to reflect genuine aesthetic diversity rather than the statistical monoculture of the English-language internet \citep{Chang2024, Bayramli2025}.
+The recursive contamination dynamic is perhaps the most difficult to address, because it operates across model generations and involves the broader ecosystem of web-scraped training data. Data provenance tracking and synthetic content filtering can reduce the fraction of AI-generated material entering future training sets. Frameworks such as DiverGen \citep{Chang2024} and intelligent oversampling of underrepresented modes can counteract the uneven statistical mass that powers the prior transmission effect. More fundamentally, active curation of culturally diverse, high-quality training data - moving beyond passive web scraping toward partnerships with cultural institutions, indigenous communities, and non-Western media archives - is essential if the training distribution is to reflect genuine aesthetic diversity rather than the statistical monoculture of the English-language internet \citep{Chang2024, Bayramli2025}.
 
-Beyond these targeted interventions, broader architectural changes may be necessary. Models that disentangle style from content, or that operate in frequency domains where cultural detail is preserved separately from structural composition, could resist the cross-mode averaging that MAP produces. Interactive human-AI co-creation frameworks, in which artists retain control over the generative trajectory and can guide the model toward specific aesthetic regions rather than accepting the statistical default, offer an alternative paradigm to fully automated generation. These approaches treat the model not as an autonomous aesthetic agent but as a tool whose outputs are shaped by human cultural knowledge---a relationship that, by design, resists the pull toward the mean.
+Beyond these targeted interventions, broader architectural changes may be necessary. Models that disentangle style from content, or that operate in frequency domains where cultural detail is preserved separately from structural composition, could resist the cross-mode averaging that MAP produces. Interactive human-AI co-creation frameworks, in which artists retain control over the generative trajectory and can guide the model toward specific aesthetic regions rather than accepting the statistical default, offer an alternative paradigm to fully automated generation. These approaches treat the model not as an autonomous aesthetic agent but as a tool whose outputs are shaped by human cultural knowledge - a relationship that, by design, resists the pull toward the mean.
 
 \subsection{Future work}
 
@@ -832,7 +834,7 @@ This paper has developed a rigorous mathematical foundation for the critical ana
 
 Our core insight distils to this: the trajectory toward aesthetic flattening and the prevalence of SLOP is a consequence of an algorithmic design that equates statistical likelihood with aesthetic desirability, and systematically treats deviation from the statistical average as error to be corrected. The Mode Averaging Principle formalises this: any aesthetic expression with low statistical mass in the training data is structurally vulnerable to absorption by the dominant mode through the mathematical mechanics of conditional expectation. Our empirical analysis confirms this is not merely a theoretical concern: DALL-E 3 and Imagen 4 generate outputs that collapse to approximately 10 effective dimensions out of 768, suppress minority cultural diversity by 17\% relative to majority cultures ($p = 0.0002$), and converge to cosine similarity 0.86 across independently developed models for all 30 test prompts. Crucially, the ablation study demonstrates that this homogenisation is primarily structural: 91\% of the majority/minority diversity gap is present in a base model with no preference training, and classifier-free guidance monotonically amplifies the effect. The common attribution of AI aesthetic homogeneity to RLHF or biased curation, while not incorrect, is substantially incomplete.
 
-The cultural implications are significant. Our framework provides technical substance to the critical observation that generative AI enforces a statistical monoculture---not through deliberate ideological design, but through the logic of optimisation itself. The mimicry gap between AI outputs and authentic cultural expression is mathematically proportional to the marginalisation of that culture in the training data. Platform realism is not a metaphor but a mathematical prediction---one now supported by empirical measurement.
+The cultural implications are significant. Our framework provides technical substance to the critical observation that generative AI enforces a statistical monoculture - not through deliberate ideological design, but through the logic of optimisation itself. The mimicry gap between AI outputs and authentic cultural expression is mathematically proportional to the marginalisation of that culture in the training data. Platform realism is not a metaphor but a mathematical prediction - one now supported by empirical measurement.
 
 If artificial intelligence is to expand rather than flatten our cultural horizons, its fundamental design must be reconceived. Diversity cannot be an afterthought or a data-side fix; it must be encoded in the generative objective itself. We hope this paper contributes a precise technical language, framework, and empirical methodology for that urgent project.
 
