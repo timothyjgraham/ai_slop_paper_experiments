@@ -1,0 +1,618 @@
+[
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_american",
+    "key": "sdxl-base__cfg1.0__ci_american",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_british",
+    "key": "sdxl-base__cfg1.0__ci_british",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_french",
+    "key": "sdxl-base__cfg1.0__ci_french",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_bangladeshi",
+    "key": "sdxl-base__cfg1.0__ci_bangladeshi",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_nigerian",
+    "key": "sdxl-base__cfg1.0__ci_nigerian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_mongolian",
+    "key": "sdxl-base__cfg1.0__ci_mongolian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_ethiopian",
+    "key": "sdxl-base__cfg1.0__ci_ethiopian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_kurdish",
+    "key": "sdxl-base__cfg1.0__ci_kurdish",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "oe_landscape",
+    "key": "sdxl-base__cfg1.0__oe_landscape",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "oe_home",
+    "key": "sdxl-base__cfg1.0__oe_home",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "oe_professional",
+    "key": "sdxl-base__cfg1.0__oe_professional",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_american",
+    "key": "sdxl-base__cfg5.0__ci_american",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_british",
+    "key": "sdxl-base__cfg5.0__ci_british",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_french",
+    "key": "sdxl-base__cfg5.0__ci_french",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_bangladeshi",
+    "key": "sdxl-base__cfg5.0__ci_bangladeshi",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_nigerian",
+    "key": "sdxl-base__cfg5.0__ci_nigerian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_mongolian",
+    "key": "sdxl-base__cfg5.0__ci_mongolian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_ethiopian",
+    "key": "sdxl-base__cfg5.0__ci_ethiopian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_kurdish",
+    "key": "sdxl-base__cfg5.0__ci_kurdish",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "oe_landscape",
+    "key": "sdxl-base__cfg5.0__oe_landscape",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "oe_home",
+    "key": "sdxl-base__cfg5.0__oe_home",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "oe_professional",
+    "key": "sdxl-base__cfg5.0__oe_professional",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_american",
+    "key": "sdxl-base__cfg7.5__ci_american",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_british",
+    "key": "sdxl-base__cfg7.5__ci_british",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_french",
+    "key": "sdxl-base__cfg7.5__ci_french",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_bangladeshi",
+    "key": "sdxl-base__cfg7.5__ci_bangladeshi",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_nigerian",
+    "key": "sdxl-base__cfg7.5__ci_nigerian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_mongolian",
+    "key": "sdxl-base__cfg7.5__ci_mongolian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_ethiopian",
+    "key": "sdxl-base__cfg7.5__ci_ethiopian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_kurdish",
+    "key": "sdxl-base__cfg7.5__ci_kurdish",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "oe_landscape",
+    "key": "sdxl-base__cfg7.5__oe_landscape",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "oe_home",
+    "key": "sdxl-base__cfg7.5__oe_home",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "oe_professional",
+    "key": "sdxl-base__cfg7.5__oe_professional",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_american",
+    "key": "sdxl-base__cfg15.0__ci_american",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_british",
+    "key": "sdxl-base__cfg15.0__ci_british",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_french",
+    "key": "sdxl-base__cfg15.0__ci_french",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_bangladeshi",
+    "key": "sdxl-base__cfg15.0__ci_bangladeshi",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_nigerian",
+    "key": "sdxl-base__cfg15.0__ci_nigerian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_mongolian",
+    "key": "sdxl-base__cfg15.0__ci_mongolian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_ethiopian",
+    "key": "sdxl-base__cfg15.0__ci_ethiopian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_kurdish",
+    "key": "sdxl-base__cfg15.0__ci_kurdish",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "oe_landscape",
+    "key": "sdxl-base__cfg15.0__oe_landscape",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "oe_home",
+    "key": "sdxl-base__cfg15.0__oe_home",
+    "n": 10
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "oe_professional",
+    "key": "sdxl-base__cfg15.0__oe_professional",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_american",
+    "key": "sdxl-dpo__cfg1.0__ci_american",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_british",
+    "key": "sdxl-dpo__cfg1.0__ci_british",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_french",
+    "key": "sdxl-dpo__cfg1.0__ci_french",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_bangladeshi",
+    "key": "sdxl-dpo__cfg1.0__ci_bangladeshi",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_nigerian",
+    "key": "sdxl-dpo__cfg1.0__ci_nigerian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_mongolian",
+    "key": "sdxl-dpo__cfg1.0__ci_mongolian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_ethiopian",
+    "key": "sdxl-dpo__cfg1.0__ci_ethiopian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_kurdish",
+    "key": "sdxl-dpo__cfg1.0__ci_kurdish",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "oe_landscape",
+    "key": "sdxl-dpo__cfg1.0__oe_landscape",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "oe_home",
+    "key": "sdxl-dpo__cfg1.0__oe_home",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "oe_professional",
+    "key": "sdxl-dpo__cfg1.0__oe_professional",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_american",
+    "key": "sdxl-dpo__cfg5.0__ci_american",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_british",
+    "key": "sdxl-dpo__cfg5.0__ci_british",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_french",
+    "key": "sdxl-dpo__cfg5.0__ci_french",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_bangladeshi",
+    "key": "sdxl-dpo__cfg5.0__ci_bangladeshi",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_nigerian",
+    "key": "sdxl-dpo__cfg5.0__ci_nigerian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_mongolian",
+    "key": "sdxl-dpo__cfg5.0__ci_mongolian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_ethiopian",
+    "key": "sdxl-dpo__cfg5.0__ci_ethiopian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_kurdish",
+    "key": "sdxl-dpo__cfg5.0__ci_kurdish",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "oe_landscape",
+    "key": "sdxl-dpo__cfg5.0__oe_landscape",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "oe_home",
+    "key": "sdxl-dpo__cfg5.0__oe_home",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "oe_professional",
+    "key": "sdxl-dpo__cfg5.0__oe_professional",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_american",
+    "key": "sdxl-dpo__cfg7.5__ci_american",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_british",
+    "key": "sdxl-dpo__cfg7.5__ci_british",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_french",
+    "key": "sdxl-dpo__cfg7.5__ci_french",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_bangladeshi",
+    "key": "sdxl-dpo__cfg7.5__ci_bangladeshi",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_nigerian",
+    "key": "sdxl-dpo__cfg7.5__ci_nigerian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_mongolian",
+    "key": "sdxl-dpo__cfg7.5__ci_mongolian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_ethiopian",
+    "key": "sdxl-dpo__cfg7.5__ci_ethiopian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_kurdish",
+    "key": "sdxl-dpo__cfg7.5__ci_kurdish",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "oe_landscape",
+    "key": "sdxl-dpo__cfg7.5__oe_landscape",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "oe_home",
+    "key": "sdxl-dpo__cfg7.5__oe_home",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "oe_professional",
+    "key": "sdxl-dpo__cfg7.5__oe_professional",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_american",
+    "key": "sdxl-dpo__cfg15.0__ci_american",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_british",
+    "key": "sdxl-dpo__cfg15.0__ci_british",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_french",
+    "key": "sdxl-dpo__cfg15.0__ci_french",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_bangladeshi",
+    "key": "sdxl-dpo__cfg15.0__ci_bangladeshi",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_nigerian",
+    "key": "sdxl-dpo__cfg15.0__ci_nigerian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_mongolian",
+    "key": "sdxl-dpo__cfg15.0__ci_mongolian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_ethiopian",
+    "key": "sdxl-dpo__cfg15.0__ci_ethiopian",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_kurdish",
+    "key": "sdxl-dpo__cfg15.0__ci_kurdish",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "oe_landscape",
+    "key": "sdxl-dpo__cfg15.0__oe_landscape",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "oe_home",
+    "key": "sdxl-dpo__cfg15.0__oe_home",
+    "n": 10
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "oe_professional",
+    "key": "sdxl-dpo__cfg15.0__oe_professional",
+    "n": 10
+  }
+]

@@ -1,0 +1,45 @@
+# Generated image corpus is NOT tracked (regenerable from prompts; large; provider terms)
+experiments/**/images/
+*.jpg
+*.jpeg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# API keys / secrets
+.env
+*.key
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.run.xml
+*.bcf
+*-blx.bib
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# NOTE: embeddings/*.npz ARE tracked on purpose (they are the reproducibility bridge).

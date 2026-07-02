@@ -1,0 +1,15 @@
+# Core (synthetic experiments + analysis from precomputed embeddings)
+numpy>=1.21.0
+scipy>=1.7.0
+matplotlib>=3.5.0
+
+# Embedding + empirical analysis (needed only to re-embed images)
+torch>=2.0
+torchvision>=0.15
+transformers>=4.30
+Pillow>=9.0
+tqdm>=4.60
+
+# Image generation (needed only to regenerate the corpus via APIs)
+openai>=1.0
+google-genai>=1.0

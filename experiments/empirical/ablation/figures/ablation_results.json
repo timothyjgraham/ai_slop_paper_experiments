@@ -1,0 +1,882 @@
+[
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_american",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.6125744581222534,
+    "d_eff": 6.954492092132568
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_british",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.6899797320365906,
+    "d_eff": 7.485755920410156
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_french",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.6652668714523315,
+    "d_eff": 6.492367267608643
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_bangladeshi",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5717430114746094,
+    "d_eff": 7.24717903137207
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_nigerian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5593379735946655,
+    "d_eff": 7.106746673583984
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_mongolian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5941883325576782,
+    "d_eff": 6.7295427322387695
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_ethiopian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5436384081840515,
+    "d_eff": 7.188096523284912
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "ci_kurdish",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.6043287515640259,
+    "d_eff": 6.900273323059082
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "oe_landscape",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5745449662208557,
+    "d_eff": 7.275939464569092
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "oe_home",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5224635601043701,
+    "d_eff": 6.938697338104248
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 1.0,
+    "prompt_id": "oe_professional",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5032483339309692,
+    "d_eff": 7.290374755859375
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_american",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5997503995895386,
+    "d_eff": 6.873598575592041
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_british",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.47399377822875977,
+    "d_eff": 7.505414962768555
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_french",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5478261113166809,
+    "d_eff": 6.520693302154541
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_bangladeshi",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.39558470249176025,
+    "d_eff": 6.3063554763793945
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_nigerian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.4572787582874298,
+    "d_eff": 5.351358413696289
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_mongolian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.3203527629375458,
+    "d_eff": 5.9234771728515625
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_ethiopian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.3149046003818512,
+    "d_eff": 6.189868927001953
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "ci_kurdish",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.43738433718681335,
+    "d_eff": 5.0739336013793945
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "oe_landscape",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5204017162322998,
+    "d_eff": 5.099757194519043
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "oe_home",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.526231586933136,
+    "d_eff": 4.587437629699707
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 5.0,
+    "prompt_id": "oe_professional",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.7022546529769897,
+    "d_eff": 6.759631633758545
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_american",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5404464602470398,
+    "d_eff": 6.2409162521362305
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_british",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.46347934007644653,
+    "d_eff": 6.899379730224609
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_french",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.45032382011413574,
+    "d_eff": 7.128603935241699
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_bangladeshi",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.3782797157764435,
+    "d_eff": 5.352668762207031
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_nigerian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.44528549909591675,
+    "d_eff": 5.170286178588867
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_mongolian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.2929503321647644,
+    "d_eff": 5.670897006988525
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_ethiopian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.31650811433792114,
+    "d_eff": 6.366053581237793
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "ci_kurdish",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.4043677747249603,
+    "d_eff": 4.650691509246826
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "oe_landscape",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5278841257095337,
+    "d_eff": 4.646670818328857
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "oe_home",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5748146772384644,
+    "d_eff": 4.383146286010742
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 7.5,
+    "prompt_id": "oe_professional",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.7401309609413147,
+    "d_eff": 6.810641288757324
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_american",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.4308733344078064,
+    "d_eff": 5.30981969833374
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_british",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.4490955173969269,
+    "d_eff": 6.2068071365356445
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_french",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.4578200578689575,
+    "d_eff": 6.610872745513916
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_bangladeshi",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.3666083812713623,
+    "d_eff": 5.541858673095703
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_nigerian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.3824319839477539,
+    "d_eff": 4.761014461517334
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_mongolian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.31599390506744385,
+    "d_eff": 5.164257526397705
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_ethiopian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.30859410762786865,
+    "d_eff": 5.3932952880859375
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "ci_kurdish",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.315079927444458,
+    "d_eff": 6.9614787101745605
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "oe_landscape",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.38630568981170654,
+    "d_eff": 3.5763204097747803
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "oe_home",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.4696435332298279,
+    "d_eff": 4.960482597351074
+  },
+  {
+    "model": "sdxl-base",
+    "cfg": 15.0,
+    "prompt_id": "oe_professional",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.595605731010437,
+    "d_eff": 6.977889060974121
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_american",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.6035527586936951,
+    "d_eff": 7.408301830291748
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_british",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.640874981880188,
+    "d_eff": 7.01212739944458
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_french",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.586320161819458,
+    "d_eff": 6.48219633102417
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_bangladeshi",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5248793959617615,
+    "d_eff": 6.509531497955322
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_nigerian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5294920206069946,
+    "d_eff": 5.653404712677002
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_mongolian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.4773752689361572,
+    "d_eff": 7.1220622062683105
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_ethiopian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.43735143542289734,
+    "d_eff": 5.801657676696777
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "ci_kurdish",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5312583446502686,
+    "d_eff": 6.617191314697266
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "oe_landscape",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.47259005904197693,
+    "d_eff": 6.7017927169799805
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "oe_home",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5223898887634277,
+    "d_eff": 5.783096790313721
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 1.0,
+    "prompt_id": "oe_professional",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.6330071687698364,
+    "d_eff": 7.788516044616699
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_american",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5877909064292908,
+    "d_eff": 6.677753925323486
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_british",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.39242976903915405,
+    "d_eff": 5.6764421463012695
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_french",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5295069217681885,
+    "d_eff": 5.795551300048828
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_bangladeshi",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.2753004729747772,
+    "d_eff": 5.337404727935791
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_nigerian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.44645312428474426,
+    "d_eff": 4.9781904220581055
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_mongolian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.31643325090408325,
+    "d_eff": 5.53384256362915
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_ethiopian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.30312323570251465,
+    "d_eff": 5.52543306350708
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "ci_kurdish",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.37551188468933105,
+    "d_eff": 6.9766693115234375
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "oe_landscape",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.4631507694721222,
+    "d_eff": 4.62628173828125
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "oe_home",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5122483372688293,
+    "d_eff": 5.60414457321167
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 5.0,
+    "prompt_id": "oe_professional",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.6500888466835022,
+    "d_eff": 6.5954694747924805
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_american",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5846096873283386,
+    "d_eff": 6.0935211181640625
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_british",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.368794322013855,
+    "d_eff": 6.175877571105957
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_french",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.4532211124897003,
+    "d_eff": 5.8950371742248535
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_bangladeshi",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.30097895860671997,
+    "d_eff": 4.83491325378418
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_nigerian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.43225887417793274,
+    "d_eff": 4.193241119384766
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_mongolian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.2903877794742584,
+    "d_eff": 5.397967338562012
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_ethiopian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.3216175436973572,
+    "d_eff": 5.586918354034424
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "ci_kurdish",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.3550793528556824,
+    "d_eff": 6.09132719039917
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "oe_landscape",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.43725547194480896,
+    "d_eff": 5.226137638092041
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "oe_home",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.4360748827457428,
+    "d_eff": 5.958619594573975
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 7.5,
+    "prompt_id": "oe_professional",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5987225770950317,
+    "d_eff": 7.346384525299072
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_american",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.5381418466567993,
+    "d_eff": 6.267199516296387
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_british",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.3450579047203064,
+    "d_eff": 6.172541618347168
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_french",
+    "group": "majority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.4260220527648926,
+    "d_eff": 5.320182800292969
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_bangladeshi",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.2694188356399536,
+    "d_eff": 5.085012912750244
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_nigerian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.44553807377815247,
+    "d_eff": 4.703670978546143
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_mongolian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.32003551721572876,
+    "d_eff": 5.06836462020874
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_ethiopian",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.336299329996109,
+    "d_eff": 4.98363733291626
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "ci_kurdish",
+    "group": "minority",
+    "category": "cultural_identity",
+    "n": 10,
+    "R_alpha": 0.36017540097236633,
+    "d_eff": 5.650959014892578
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "oe_landscape",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.3735964298248291,
+    "d_eff": 4.293712615966797
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "oe_home",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.44107359647750854,
+    "d_eff": 5.714188575744629
+  },
+  {
+    "model": "sdxl-dpo",
+    "cfg": 15.0,
+    "prompt_id": "oe_professional",
+    "group": "unknown",
+    "category": "open_ended",
+    "n": 10,
+    "R_alpha": 0.5747696757316589,
+    "d_eff": 6.784745693206787
+  }
+]

@@ -1,0 +1,73 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the following work."
+title: "Measuring Aesthetic Homogenization in Text-to-Image AI: Diversity Collapse in DALL-E 3 and Imagen 4"
+abstract: "A reproducible methodology for quantifying aesthetic and cultural diversity collapse in text-to-image models, operationalizing three distributional measures (effective support radius, diversity index, effective dimension) in CLIP and DINOv2 embedding space, with an empirical study of DALL-E 3 and Imagen 4 and a controlled SDXL ablation isolating the MSE denoising objective from preference training."
+authors:
+  - family-names: Graham
+    given-names: Timothy
+    orcid: "https://orcid.org/0000-0002-4053-9313"
+  - family-names: Sharmin
+    given-names: Sadia
+    orcid: "https://orcid.org/0009-0007-0116-8963"
+  - family-names: Whelan-Shamy
+    given-names: Daniel
+    orcid: "https://orcid.org/0009-0005-2680-5434"
+  - family-names: Padinjaredath Suresh
+    given-names: Vish
+    orcid: "https://orcid.org/0000-0002-6020-2363"
+  - family-names: El Masri
+    given-names: Rayane
+    orcid: "https://orcid.org/0009-0003-0651-0319"
+  - family-names: Radke
+    given-names: Amelia
+    orcid: "https://orcid.org/0000-0002-3304-1672"
+  - family-names: Snoswell
+    given-names: Aaron
+    orcid: "https://orcid.org/0000-0003-0960-0144"
+  - family-names: Burgess
+    given-names: Jean
+    orcid: "https://orcid.org/0000-0002-4770-1627"
+  - family-names: Angus
+    given-names: Daniel
+    orcid: "https://orcid.org/0000-0002-1412-5096"
+  - family-names: Witzenberger
+    given-names: Kevin
+    orcid: "https://orcid.org/0000-0002-7643-701X"
+  - family-names: Vilkins
+    given-names: Samantha
+    orcid: "https://orcid.org/0000-0002-7479-2683"
+  - family-names: Svegaard
+    given-names: Sebastian
+    orcid: "https://orcid.org/0009-0008-1613-3445"
+  - family-names: Mohammadamini
+    given-names: Shaghayegh
+    orcid: "https://orcid.org/0009-0004-0442-2574"
+  - family-names: He
+    given-names: Will
+  - family-names: Zhu
+    given-names: Guangnan
+    orcid: "https://orcid.org/0009-0008-1279-5521"
+  - family-names: Obeid
+    given-names: Abdul
+    orcid: "https://orcid.org/0000-0002-9838-1838"
+  - family-names: Chand
+    given-names: Kunal
+    orcid: "https://orcid.org/0000-0002-5298-1571"
+  - family-names: Badola
+    given-names: Anand
+    orcid: "https://orcid.org/0000-0001-6585-0952"
+  - family-names: Luong
+    given-names: Khanh
+    orcid: "https://orcid.org/0000-0001-6981-7367"
+  - family-names: Gardam
+    given-names: Caroline
+    orcid: "https://orcid.org/0000-0001-9439-5215"
+  - family-names: Nagappa
+    given-names: Ashwin
+    orcid: "https://orcid.org/0000-0002-4187-1393"
+year: 2026
+version: "2.0"
+doi: "10.5281/zenodo.20881272"
+repository-code: "https://github.com/timothyjgraham/ai_slop_paper_experiments"
+license: MIT
+# TODO: add journal reference once available.

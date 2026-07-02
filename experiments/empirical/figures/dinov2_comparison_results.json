@@ -1,0 +1,966 @@
+{
+  "clip_results": [
+    {
+      "platform": "google",
+      "prompt_id": "as_aboriginal",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.442553848028183,
+      "d_eff": 11.31124496459961
+    },
+    {
+      "platform": "google",
+      "prompt_id": "as_cubism",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.4785689115524292,
+      "d_eff": 9.759243965148926
+    },
+    {
+      "platform": "google",
+      "prompt_id": "as_impressionism",
+      "group": "majority",
+      "n": 18,
+      "R_alpha": 0.3945502042770386,
+      "d_eff": 9.397828102111816
+    },
+    {
+      "platform": "google",
+      "prompt_id": "as_persian",
+      "group": "minority",
+      "n": 19,
+      "R_alpha": 0.3914126753807068,
+      "d_eff": 8.36466121673584
+    },
+    {
+      "platform": "google",
+      "prompt_id": "as_ukiyoe",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.4331597685813904,
+      "d_eff": 8.84354019165039
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_american",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.5641913414001465,
+      "d_eff": 9.281000137329102
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_australian",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.6316866874694824,
+      "d_eff": 9.426161766052246
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_bangladeshi",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5893705487251282,
+      "d_eff": 7.405883312225342
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_british",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.48887717723846436,
+      "d_eff": 10.105513572692871
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_canadian",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.6669563055038452,
+      "d_eff": 9.677813529968262
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_ethiopian",
+      "group": "minority",
+      "n": 14,
+      "R_alpha": 0.487051397562027,
+      "d_eff": 7.832117557525635
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_french",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.540934681892395,
+      "d_eff": 7.571238040924072
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_guatemalan",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.434176504611969,
+      "d_eff": 9.288896560668945
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_kurdish",
+      "group": "minority",
+      "n": 18,
+      "R_alpha": 0.5497875213623047,
+      "d_eff": 9.643226623535156
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_maori",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.45046287775039673,
+      "d_eff": 10.143634796142578
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_mongolian",
+      "group": "minority",
+      "n": 18,
+      "R_alpha": 0.43393608927726746,
+      "d_eff": 8.08343505859375
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_nigerian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5251374840736389,
+      "d_eff": 5.278642177581787
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_peruvian",
+      "group": "minority",
+      "n": 18,
+      "R_alpha": 0.34373489022254944,
+      "d_eff": 9.521688461303711
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_samoan",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5086885094642639,
+      "d_eff": 8.780299186706543
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_uzbek",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.4839869439601898,
+      "d_eff": 9.97133731842041
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_city",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.39947769045829773,
+      "d_eff": 8.497034072875977
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_family",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.552937924861908,
+      "d_eff": 7.959085941314697
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_home",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.5666728019714355,
+      "d_eff": 10.635892868041992
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_landscape",
+      "group": "unknown",
+      "n": 19,
+      "R_alpha": 0.500735342502594,
+      "d_eff": 10.379000663757324
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_meal",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.5803210139274597,
+      "d_eff": 12.044318199157715
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_outfit",
+      "group": "unknown",
+      "n": 17,
+      "R_alpha": 0.6748124957084656,
+      "d_eff": 8.608885765075684
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_peaceful",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.5335027575492859,
+      "d_eff": 8.80059814453125
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_professional",
+      "group": "unknown",
+      "n": 18,
+      "R_alpha": 0.6412842869758606,
+      "d_eff": 7.6508307456970215
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_romantic",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.6034846305847168,
+      "d_eff": 7.9131388664245605
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_room",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.40769636631011963,
+      "d_eff": 9.639561653137207
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_aboriginal",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.4585118293762207,
+      "d_eff": 10.549595832824707
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_cubism",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.4477764964103699,
+      "d_eff": 11.181056022644043
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_impressionism",
+      "group": "majority",
+      "n": 18,
+      "R_alpha": 0.4286697208881378,
+      "d_eff": 8.188872337341309
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_persian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.38194867968559265,
+      "d_eff": 11.949698448181152
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_ukiyoe",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.39038726687431335,
+      "d_eff": 9.131503105163574
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_american",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.6556983590126038,
+      "d_eff": 12.45966911315918
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_australian",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.6266835331916809,
+      "d_eff": 11.857427597045898
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_bangladeshi",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.6154891848564148,
+      "d_eff": 10.00574016571045
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_british",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.7205181121826172,
+      "d_eff": 12.501313209533691
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_canadian",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.6425954699516296,
+      "d_eff": 12.017696380615234
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_ethiopian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5345582365989685,
+      "d_eff": 10.035399436950684
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_french",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.6457890868186951,
+      "d_eff": 12.819486618041992
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_guatemalan",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5848946571350098,
+      "d_eff": 11.177249908447266
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_kurdish",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5843750834465027,
+      "d_eff": 11.643875122070312
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_maori",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.48596519231796265,
+      "d_eff": 9.633062362670898
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_mongolian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.539511501789093,
+      "d_eff": 9.831643104553223
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_nigerian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.4622284770011902,
+      "d_eff": 10.616170883178711
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_peruvian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5318682789802551,
+      "d_eff": 10.03090763092041
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_samoan",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5910308361053467,
+      "d_eff": 9.647527694702148
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_uzbek",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.5338184833526611,
+      "d_eff": 11.17788314819336
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_city",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.36650538444519043,
+      "d_eff": 10.107765197753906
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_family",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.6146984696388245,
+      "d_eff": 8.623775482177734
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_home",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.5099572539329529,
+      "d_eff": 8.24044418334961
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_landscape",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.40495529770851135,
+      "d_eff": 9.00731086730957
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_meal",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.45412859320640564,
+      "d_eff": 7.600013256072998
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_outfit",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.5955418944358826,
+      "d_eff": 9.830052375793457
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_peaceful",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.3979469835758209,
+      "d_eff": 10.603658676147461
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_professional",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.6073122620582581,
+      "d_eff": 9.509617805480957
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_romantic",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.5888902544975281,
+      "d_eff": 13.046939849853516
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_room",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.448572039604187,
+      "d_eff": 8.373205184936523
+    }
+  ],
+  "dinov2_results": [
+    {
+      "platform": "google",
+      "prompt_id": "as_aboriginal",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.7163957357406616,
+      "d_eff": 11.361574172973633
+    },
+    {
+      "platform": "google",
+      "prompt_id": "as_cubism",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.6551952958106995,
+      "d_eff": 11.052244186401367
+    },
+    {
+      "platform": "google",
+      "prompt_id": "as_impressionism",
+      "group": "majority",
+      "n": 18,
+      "R_alpha": 0.6600228548049927,
+      "d_eff": 7.654280662536621
+    },
+    {
+      "platform": "google",
+      "prompt_id": "as_persian",
+      "group": "minority",
+      "n": 19,
+      "R_alpha": 0.6496691703796387,
+      "d_eff": 11.312445640563965
+    },
+    {
+      "platform": "google",
+      "prompt_id": "as_ukiyoe",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.6744582056999207,
+      "d_eff": 10.58997631072998
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_american",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.8064525723457336,
+      "d_eff": 6.956855297088623
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_australian",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.9741616249084473,
+      "d_eff": 11.124942779541016
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_bangladeshi",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.669192910194397,
+      "d_eff": 9.927092552185059
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_british",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.8802788257598877,
+      "d_eff": 8.563023567199707
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_canadian",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.9532811641693115,
+      "d_eff": 10.963622093200684
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_ethiopian",
+      "group": "minority",
+      "n": 14,
+      "R_alpha": 0.7192448377609253,
+      "d_eff": 9.516487121582031
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_french",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.7423316836357117,
+      "d_eff": 9.03219223022461
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_guatemalan",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.8148175477981567,
+      "d_eff": 12.190037727355957
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_kurdish",
+      "group": "minority",
+      "n": 18,
+      "R_alpha": 0.9060283303260803,
+      "d_eff": 9.30120849609375
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_maori",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.7582638263702393,
+      "d_eff": 11.29564094543457
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_mongolian",
+      "group": "minority",
+      "n": 18,
+      "R_alpha": 0.7408409118652344,
+      "d_eff": 8.972054481506348
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_nigerian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.7259902954101562,
+      "d_eff": 9.330161094665527
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_peruvian",
+      "group": "minority",
+      "n": 18,
+      "R_alpha": 0.7678802013397217,
+      "d_eff": 10.325654983520508
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_samoan",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.754892885684967,
+      "d_eff": 12.320390701293945
+    },
+    {
+      "platform": "google",
+      "prompt_id": "ci_uzbek",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.8439432978630066,
+      "d_eff": 8.876236915588379
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_city",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.8406405448913574,
+      "d_eff": 11.582908630371094
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_family",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.9597206115722656,
+      "d_eff": 11.731330871582031
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_home",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.8487035632133484,
+      "d_eff": 10.87069320678711
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_landscape",
+      "group": "unknown",
+      "n": 19,
+      "R_alpha": 0.9798041582107544,
+      "d_eff": 12.2244873046875
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_meal",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 1.0063550472259521,
+      "d_eff": 11.516936302185059
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_outfit",
+      "group": "unknown",
+      "n": 17,
+      "R_alpha": 0.9156797528266907,
+      "d_eff": 7.9816813468933105
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_peaceful",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.9823044538497925,
+      "d_eff": 12.048768043518066
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_professional",
+      "group": "unknown",
+      "n": 18,
+      "R_alpha": 0.8328402638435364,
+      "d_eff": 8.581981658935547
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_romantic",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.9178665280342102,
+      "d_eff": 11.333205223083496
+    },
+    {
+      "platform": "google",
+      "prompt_id": "oe_room",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.837801992893219,
+      "d_eff": 7.838816165924072
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_aboriginal",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.76945561170578,
+      "d_eff": 9.24442195892334
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_cubism",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.7448182702064514,
+      "d_eff": 8.050867080688477
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_impressionism",
+      "group": "majority",
+      "n": 18,
+      "R_alpha": 0.6948978304862976,
+      "d_eff": 8.49159049987793
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_persian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.6811840534210205,
+      "d_eff": 10.832945823669434
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "as_ukiyoe",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.540123701095581,
+      "d_eff": 10.536417007446289
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_american",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.8665111064910889,
+      "d_eff": 14.182600021362305
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_australian",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.8616907596588135,
+      "d_eff": 12.248292922973633
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_bangladeshi",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.8777096271514893,
+      "d_eff": 10.215497970581055
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_british",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.9390124082565308,
+      "d_eff": 11.29211139678955
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_canadian",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.9058689475059509,
+      "d_eff": 14.56987476348877
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_ethiopian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.9117777347564697,
+      "d_eff": 12.437718391418457
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_french",
+      "group": "majority",
+      "n": 20,
+      "R_alpha": 0.8593609929084778,
+      "d_eff": 9.463570594787598
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_guatemalan",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.8317548036575317,
+      "d_eff": 13.684303283691406
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_kurdish",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.8229972720146179,
+      "d_eff": 12.307226181030273
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_maori",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.7916135191917419,
+      "d_eff": 13.191590309143066
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_mongolian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.8057818412780762,
+      "d_eff": 11.450819969177246
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_nigerian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.8198488354682922,
+      "d_eff": 11.563068389892578
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_peruvian",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.8725779056549072,
+      "d_eff": 12.439946174621582
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_samoan",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.789966881275177,
+      "d_eff": 14.529158592224121
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "ci_uzbek",
+      "group": "minority",
+      "n": 20,
+      "R_alpha": 0.9653897285461426,
+      "d_eff": 10.71506404876709
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_city",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.6771177649497986,
+      "d_eff": 11.053401947021484
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_family",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.926363468170166,
+      "d_eff": 13.087464332580566
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_home",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.7816973924636841,
+      "d_eff": 9.811912536621094
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_landscape",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.8331167697906494,
+      "d_eff": 10.893241882324219
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_meal",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.9519284963607788,
+      "d_eff": 7.938495635986328
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_outfit",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.8914212584495544,
+      "d_eff": 10.670153617858887
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_peaceful",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.8604219555854797,
+      "d_eff": 13.300581932067871
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_professional",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.9492848515510559,
+      "d_eff": 8.246391296386719
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_romantic",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.9081902503967285,
+      "d_eff": 15.8089017868042
+    },
+    {
+      "platform": "openai",
+      "prompt_id": "oe_room",
+      "group": "unknown",
+      "n": 20,
+      "R_alpha": 0.7723289728164673,
+      "d_eff": 9.858635902404785
+    }
+  ]
+}
